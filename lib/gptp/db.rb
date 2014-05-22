@@ -26,6 +26,7 @@ class GPTP::DB
         name text,
         password text,
         age integer,
+        email text,
         PRIMARY KEY(id)
         )
       SQL
@@ -36,6 +37,8 @@ class GPTP::DB
         name text,
         password text,
         description text,
+        phone_num integer,
+        address text,
         PRIMARY KEY(id)
         )
       SQL
@@ -149,7 +152,7 @@ class GPTP::DB
 
   def get_volunteer(name)
     volunteer = @db.execute("SELECT * FROM volunteers where name='#{name}';").flatten
-    hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3]}
+    hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3], email: volunteer[4]}
     build_volunteer(hash)
   end
 
@@ -165,8 +168,18 @@ class GPTP::DB
   end
 
   def build_volunteer(data)
-    GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age])
+    GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age], data[:email])
   end
+
+  # Organizations CRUD methods
+  def create_organization(data)
+    @db.execute("INSERT INTO organizations(name, password, description, phone_num, address) values('#{data[:name]}', '#{data[:password]}', '#{data[:description]}', '#{data[:phone_num]}', '#{data[:address]}');")
+    data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
+    build_organization(data)
+  end
+
+  # def get_organization(data)
+  # end
 
   # testing helper method
   def clear_table(table_name)
