@@ -12,4 +12,4 @@ require_relative './commands/sign_in.rb'
 require_relative './commands/volunteer_takes_penny.rb'
 require_relative './commands/sign_up.rb'
 require_relative './commands/organization_sign_up.rb'
-
+require_relative './commands/organization_gives_penny.rb'

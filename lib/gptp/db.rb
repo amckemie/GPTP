@@ -8,10 +8,10 @@ class GPTP::DB
     @db.execute( <<-SQL
       CREATE TABLE if not exists pennies (
         id integer,
-        name text NOT NULL UNIQUE,
-        description text NOT NULL,
-        org_id integer NOT NULL,
-        time_requirement text NOT NULL,
+        name text,
+        description text,
+        org_id integer,
+        time_requirement text,
         time text,
         date text,
         location text,
@@ -27,7 +27,7 @@ class GPTP::DB
         name text,
         password text,
         age integer,
-        email text,
+        email text UNIQUE,
         PRIMARY KEY(id)
         )
       SQL
