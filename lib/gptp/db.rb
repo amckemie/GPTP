@@ -148,6 +148,24 @@ class GPTP::DB
     build_penny(data_hash)
   end
 
+  def vol_pennies(vol_id)
+    pennies = @db.execute("SELECT * FROM pennies WHERE vol_id = '#{vol_id}';").flatten
+    vol_pennies = []
+    pennies.each do |penny|
+      vol_pennies << get_penny(penny[0])
+    end
+    vol_pennies
+  end
+
+  def org_pennies(org_id)
+    pennies = @db.execute("SELECT * FROM pennies WHERE org_id = '#{org_id}';").flatten
+    org_pennies = []
+    pennies.each do |penny|
+      org_pennies << get_penny(penny[0])
+    end
+    org_pennies
+  end
+
   # Volunteer CRUD methods
   def create_volunteer(data)
     @db.execute("INSERT INTO volunteers(name, password, age, email) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}', '#{data[:email]}');")
