@@ -27,6 +27,7 @@ describe GPTP::SignIn do
   end
 
   it "returns an error message if the user enters the wrong password" do
+    user1
     result = GPTP::SignIn.new.run("susie@gmail.com", "wrong")
     expect(result[:success?]).to eq(false)
     expect(result[:error]).to eq("Incorrect password.")

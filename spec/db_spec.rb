@@ -55,6 +55,15 @@ describe 'GPTP::DB' do
     it "deletes a volunteer" do
       expect(db.remove_volunteer(volunteer1.name)).to eq([])
     end
+
+    it "lists all volunteers" do
+      volunteer1
+      db.create_volunteer(name: "Ashley", password: "456", age: 25, email: "ashley@gmail.com")
+      volunteers = db.list_volunteers
+      expect(volunteers.size).to eq(2)
+      expect(volunteers[0].name).to eq("Susie")
+      expect(volunteers[1].name).to eq("Ashley")
+    end
   end
 
   describe 'organizations' do
@@ -93,6 +102,17 @@ describe 'GPTP::DB' do
     it "deletes a organization" do
       expect(db.remove_organization(organization1.email)).to eq([])
     end
+
+    it "lists all organizations" do
+      organization1
+      db.create_organization(name: "Company 2", password: "asdfgh", description: "New Company", phone_num: "000-000-0000", address: "123 drive drive", email: "new_org@gmail.com")
+      db.create_organization(name: "Company 3", password: "12345", description: "Another Company", phone_num: "111-111-1111", address: "123 road", email: "another_org@gmail.com")
+      organizations = db.list_organizations
+      expect(organizations.size).to eq(3)
+      expect(organizations[0].name).to eq("Doing Good")
+      expect(organizations[1].name).to eq("Company 2")
+      expect(organizations[2].name).to eq("Company 3")
+    end
   end
 
   describe 'pennies' do
@@ -124,5 +144,15 @@ describe 'GPTP::DB' do
       expect(penny2).to be_a(Penny)
     end
 
+    it "lists all pennies" do
+      t = Time.now
+      today = "#{t.year} #{t.month} #{t.day}"
+      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+      penn2 = db.create_penny(name: "test2", description: "have fun", org_id: 1, time_requirement: 3, time: 'noon', date: today, status: 0, vol_id: 1, location: "school")
+      pennies = db.list_pennies
+      expect(pennies.size).to eq(2)
+      expect(pennies[0].name).to eq("test")
+      expect(pennies[1].name).to eq("test2")
+    end
   end
 end

@@ -143,6 +143,16 @@ class GPTP::DB
     build_penny(data_hash)
   end
 
+  def list_pennies
+    all_pennies = []
+    pennies = @db.execute("SELECT * FROM pennies;")
+    pennies.each do |penny|
+      all_pennies << build_penny(:id => penny[0], :name => penny[1], :description => penny[2], :org_id => penny[3], :time_requirement => penny[4], :time => penny[5], :date => penny[6], :location => penny[7], :status => penny[8], :vol_id => penny[9])
+    end
+
+    all_pennies
+  end
+
   def vol_pennies(vol_id)
     pennies = @db.execute("SELECT * FROM pennies WHERE vol_id = '#{vol_id}';").flatten
     vol_pennies = []
@@ -185,6 +195,16 @@ class GPTP::DB
     @db.execute("DELETE FROM volunteers where email='#{email}';")
   end
 
+  def list_volunteers
+    all_volunteers = []
+    volunteers = @db.execute("SELECT *, CAST(password AS TEXT) FROM volunteers;")
+    volunteers.each do |volunteer|
+      all_volunteers << build_volunteer(:id => volunteer[0], :name => volunteer[1], :password => volunteer[2], :age => volunteer[3], :email => volunteer[4])
+    end
+
+    all_volunteers
+  end
+
   def build_volunteer(data)
     GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age], data[:email])
   end
@@ -211,6 +231,16 @@ class GPTP::DB
 
   def remove_organization(email)
     @db.execute("DELETE FROM organizations where email='#{email}';")
+  end
+
+  def list_organizations
+    all_organizations = []
+    organizations = @db.execute("SELECT *, CAST(password AS TEXT) FROM organizations;")
+    organizations.each do |organization|
+      all_organizations << build_organization(:id => organization[0], :name => organization[1], :password => organization[2], :description => organization[3], :phone_num => organization[4], :address => organization[5], :email => organization[6])
+    end
+
+    all_organizations
   end
 
   def build_organization(data)
