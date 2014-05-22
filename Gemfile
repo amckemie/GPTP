@@ -9,3 +9,4 @@ gem 'sinatra-contrib' #reloader so you dont have to restart server
 gem 'thin'
 gem 'rack-test'
 gem 'capybara' #add-on to rspec to test views
+gem 'sass'
