@@ -1,2 +1,0 @@
-class GPTP::Penny
-end
