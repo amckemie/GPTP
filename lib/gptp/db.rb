@@ -56,7 +56,7 @@ class GPTP::DB
     build_penny(data_hash)
   end
 
-  def update_move(id,data)
+  def update_penny(id,data)
 
     @db.execute(
       "UPDATE pennies
