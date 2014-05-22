@@ -8,7 +8,7 @@ class GPTP::DB
     @db.execute( <<-SQL
       CREATE TABLE if not exists pennies (
         id integer,
-        name text,
+        name text NOT NULL,
         description text,
         org_id integer,
         time_requirement text,
