@@ -10,3 +10,5 @@ require_relative './gptp/penny.rb'
 require_relative './gptp/db.rb'
 require_relative './commands/sign_in.rb'
 require_relative './commands/sign_up.rb'
+require_relative './commands/organization_sign_up.rb'
+
