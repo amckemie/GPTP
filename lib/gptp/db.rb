@@ -160,6 +160,10 @@ class GPTP::DB
     get_volunteer(name)
   end
 
+  def remove_volunteer(name)
+    @db.execute("DELETE FROM volunteers where name='#{name}';")
+  end
+
   def build_volunteer(data)
     GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age])
   end

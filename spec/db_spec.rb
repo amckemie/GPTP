@@ -48,7 +48,7 @@ describe 'GPTP::DB' do
 
     # remove_volunteer
     it "deletes a volunteer" do
+      expect(db.remove_volunteer(volunteer1.name)).to eq([])
     end
-
   end
 end
