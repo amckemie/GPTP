@@ -78,4 +78,23 @@ describe 'GPTP::DB' do
       expect(organization1.id).to be_a(Fixnum)
     end
   end
+
+  describe 'pennies' do
+    it 'creates a penny' do
+
+    end
+  end
+
+  after(:each) do
+    @sqldb = SQLite3::Database.new "test.db"
+    @sqldb.execute <<-SQL
+      DELETE from pennies
+    SQL
+    @sqldb.execute <<-SQL
+      DELETE from volunteers
+    SQL
+    @sqldb.execute <<-SQL
+      DELETE from organizations
+    SQL
+  end
 end
