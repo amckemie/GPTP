@@ -67,5 +67,15 @@ describe 'GPTP::DB' do
       expect(organization1.id).to be_a(Fixnum)
     end
 
+    it "returns a organization object" do
+      organization = db.get_organization(organization1.name)
+      expect(organization).to be_a(GPTP::organization)
+      expect(organization1.name).to eq("Doing Good")
+      expect(organization1.password).to eq("dgdg")
+      expect(organization1.description).to eq("doing good stuff")
+      expect(organization1.phone_num).to eq("512-123-4567")
+      expect(organization1.address).to eq("123 road drive")
+      expect(organization1.id).to be_a(Fixnum)
+    end
   end
 end
