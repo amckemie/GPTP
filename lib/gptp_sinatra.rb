@@ -6,3 +6,7 @@ require_relative 'gptp.rb'
 set :bind, '0.0.0.0'
 
 enable :sessions
+
+get '/' do
+  erb :home
+end
