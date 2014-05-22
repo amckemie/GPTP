@@ -1,9 +1,9 @@
 require 'pry'
 class GPTP::DB
   attr_writer :db
-  def initialize
+  def initialize(filename)
     # Database method
-    @db = SQLite3::Database.new "test.db"
+    @db = SQLite3::Database.new(filename)
 
     @db.execute( <<-SQL
       CREATE TABLE if not exists pennies (
@@ -145,7 +145,7 @@ class GPTP::DB
 
   # Volunteer CRUD methods
   def create_volunteer(data)
-    @db.execute("INSERT INTO volunteers(name, password, age) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}');")
+    @db.execute("INSERT INTO volunteers(name, password, age, email) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}', '#{data[:email]}');")
     data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
     build_volunteer(data)
   end
@@ -178,8 +178,15 @@ class GPTP::DB
     build_organization(data)
   end
 
-  # def get_organization(data)
-  # end
+  def get_organization(data)
+    organization = @db.execute("SELECT * FROM organizations where name='#{name}';").flatten
+    hash = {id: organization[0], name: organization[1], password: organization[2], description: organization[3], phone_num: organization[4], address: organization[5]}
+    build_organization(hash)
+  end
+
+  def build_organization(data)
+    GPTP::Organization.new(data[:id], data[:name], data[:password], data[:description], data[:phone_num], data[:address])
+  end
 
   # testing helper method
   def clear_table(table_name)
@@ -189,6 +196,6 @@ end
 
 module GPTP
   def self.db
-    @__db_instance ||= DB.new
+    @__db_instance ||= DB.new("gptp.db")
   end
 end

@@ -7,10 +7,9 @@ describe 'GPTP::DB' do
       FileUtils.rm("test.db")
     end
 
-    RPS::DB.new("test.db")
+    GPTP::DB.new("test.db")
   end
 
-  let(:db) {GPTP.db}
   let(:volunteer1) {db.create_volunteer(name: "Susie", password: "123abc", age: 21, email: "susie@gmail.com")}
   let(:organization1) {db.create_organization(name: "Doing Good", password: "dgdg", description: "doing good stuff", phone_num: "512-123-4567", address: "123 road drive")}
 
