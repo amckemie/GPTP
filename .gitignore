@@ -3,3 +3,5 @@ vendor/bundle
 .DS_Store
 gptp.db
 test.db
+
+.sass-cache/
