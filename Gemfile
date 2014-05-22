@@ -10,3 +10,4 @@ gem 'thin'
 gem 'rack-test'
 gem 'capybara' #add-on to rspec to test views
 gem 'sass'
+# gem 'foundation'
