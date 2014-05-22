@@ -1,6 +1,6 @@
 require 'pry'
 class GPTP::DB
-
+  attr_writer :db
   def initialize
     # Database method
     @db = SQLite3::Database.new "test.db"
@@ -8,21 +8,50 @@ class GPTP::DB
     @db.execute( <<-SQL
       CREATE TABLE if not exists pennies (
         id integer,
-        name string NOT NULL UNIQUE,
-        description string NOT NULL,
-        company string NOT NULL,
-        time_requirement string NOT NULL,
-        time string,
-        day string,
-        location string,
-        status string,
+        name text NOT NULL UNIQUE,
+        description text NOT NULL,
+        company text NOT NULL,
+        time_requirement text NOT NULL,
+        time text,
+        day text,
+        location text,
+        status text,
         PRIMARY KEY (id)
       )
       SQL
     )
-
+    @db.execute( <<-SQL
+      CREATE TABLE if not exists volunteers(
+        id integer,
+        name text,
+        password text,
+        age integer,
+        PRIMARY KEY(id)
+        )
+      SQL
+    )
+    @db.execute( <<-SQL
+      CREATE TABLE if not exists organizations(
+        id integer,
+        name text,
+        password text,
+        description text,
+        PRIMARY KEY(id)
+        )
+      SQL
+    )
+    @db.execute( <<-SQL
+      CREATE TABLE if not exists volunteers_pennies(
+        id integer,
+        penny_id integer,
+        vol_id integer,
+        PRIMARY KEY(id)
+        )
+      SQL
+    )
   end
 
+  # Penny CRUD methods
   def build_penny(data)
     RPS::Penny.new(data)
   end
@@ -109,6 +138,14 @@ class GPTP::DB
     }
 
     build_penny(data_hash)
+  end
+
+  # Volunteer CRUD methods
+  # def
+  # end
+  # testing helper method
+  def clear_table(table_name)
+    @db.execute("delete from '#{table_name}';")
   end
 end
 
