@@ -6633,3 +6633,13 @@ th.hide-for-touch {
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
   height: 4em; }
+
+/* line 1, ../sass/mystyles/_footer.scss */
+.footer {
+  width: 100%;
+  background: white;
+  position: fixed; }
+  /* line 5, ../sass/mystyles/_footer.scss */
+  .footer ul {
+    margin: 0 auto;
+    vertical-align: middle; }

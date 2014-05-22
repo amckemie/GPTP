@@ -10,3 +10,12 @@ enable :sessions
 get '/' do
   erb :home
 end
+
+post '/volunteer' do
+  @name = params[:name]
+  erb :volunteer, :layout => :users
+end
+
+post '/organization' do
+  erb :organization, :layout => :users
+end

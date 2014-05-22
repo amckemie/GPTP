@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GPTP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- Top Bar -->
+  <nav>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Logo</a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li>
+          <h1>Name</h1>
+        </li>
+      </ul>
+
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="has-form">
+          <%= yield_content :button %>
+        </li>
+        <li class="has-form">
+          <a href="#" class="button">Pennies</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <!-- body -->
+  <div class="row">
+    <div class="row">
+      <div>
+        <!-- past pennies -->
+        <%= yield_content :past_pennies %>
+      </div>
+      <div>
+        <!-- upcoming pennies -->
+        <%= yield_content :upcoming_pennies %>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="footer">
+    <ul class>
+      <li>Logo</li>
+      <li>Twitter</li>
+      <li>Facebook</li>
+    </ul>
+  </div>
+  <script src="/js/foundation.min.js"></script>
+</body>
+</html>
