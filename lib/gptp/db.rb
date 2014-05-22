@@ -153,6 +153,13 @@ class GPTP::DB
     build_volunteer(hash)
   end
 
+  def update_volunteer(name, data)
+    data.each do |key, value|
+      @db.execute("UPDATE volunteers SET '#{key}' = '#{value}' where name='#{name}';")
+    end
+    get_volunteer(name)
+  end
+
   def build_volunteer(data)
     GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age])
   end

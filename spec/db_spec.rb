@@ -40,6 +40,10 @@ describe 'GPTP::DB' do
 
     # update_volunteer
     it "updates a volunteer's information" do
+      volunteer = db.update_volunteer(volunteer1.name, age: 24)
+      expect(volunteer.name).to eq(volunteer1.name)
+      expect(volunteer.age).to eq(24)
+      expect(db.get_volunteer(volunteer1.name).age).to eq(24)
     end
 
     # remove_volunteer
