@@ -39,6 +39,7 @@ class GPTP::DB
         description text,
         phone_num integer,
         address text,
+        email text,
         PRIMARY KEY(id)
         )
       SQL
@@ -150,20 +151,20 @@ class GPTP::DB
     build_volunteer(data)
   end
 
-  def get_volunteer(name)
-    volunteer = @db.execute("SELECT * FROM volunteers where name='#{name}';").flatten
+  def get_volunteer(email)
+    volunteer = @db.execute("SELECT * FROM volunteers where name='#{email}';").flatten
     hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3], email: volunteer[4]}
     build_volunteer(hash)
   end
 
-  def update_volunteer(name, data)
+  def update_volunteer(id, data)
     data.each do |key, value|
       @db.execute("UPDATE volunteers SET '#{key}' = '#{value}' where name='#{name}';")
     end
     get_volunteer(name)
   end
 
-  def remove_volunteer(name)
+  def remove_volunteer(email)
     @db.execute("DELETE FROM volunteers where name='#{name}';")
   end
 
@@ -173,19 +174,19 @@ class GPTP::DB
 
   # Organizations CRUD methods
   def create_organization(data)
-    @db.execute("INSERT INTO organizations(name, password, description, phone_num, address) values('#{data[:name]}', '#{data[:password]}', '#{data[:description]}', '#{data[:phone_num]}', '#{data[:address]}');")
+    @db.execute("INSERT INTO organizations(name, password, description, phone_num, address, email) values('#{data[:name]}', '#{data[:password]}', '#{data[:description]}', '#{data[:phone_num]}', '#{data[:address]}', '#{data[:email]}');")
     data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
     build_organization(data)
   end
 
-  def get_organization(data)
-    organization = @db.execute("SELECT * FROM organizations where name='#{name}';").flatten
-    hash = {id: organization[0], name: organization[1], password: organization[2], description: organization[3], phone_num: organization[4], address: organization[5]}
+  def get_organization(email)
+    organization = @db.execute("SELECT * FROM organizations where name='#{email}';").flatten
+    hash = {id: organization[0], name: organization[1], password: organization[2], description: organization[3], phone_num: organization[4], address: organization[5], email: organization[6]}
     build_organization(hash)
   end
 
   def build_organization(data)
-    GPTP::Organization.new(data[:id], data[:name], data[:password], data[:description], data[:phone_num], data[:address])
+    GPTP::Organization.new(data[:id], data[:name], data[:password], data[:description], data[:phone_num], data[:address], data[:email])
   end
 
   # testing helper method
