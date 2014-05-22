@@ -1,2 +1,3 @@
-# Ignore sass-cache files.
-*.sass-cache*
+.bundle
+vendor/bundle
+.DS_Store
