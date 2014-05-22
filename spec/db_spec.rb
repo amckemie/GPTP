@@ -2,7 +2,13 @@ require 'spec_helper'
 
 describe 'GPTP::DB' do
   let(:db) {GPTP.db}
-  let(:volunteer1) {db.create_volunteer("Susie", "123abc", 21)}
+  let(:volunteer1) {db.create_volunteer(name: "Susie", password: "123abc", age: 21)}
+
+  before(:each) do
+    GPTP.db.clear_table("volunteers")
+    GPTP.db.clear_table("pennies")
+    GPTP.db.clear_table("organizations")
+  end
 
   it "exists" do
     expect(DB).to be_a(Class)
@@ -24,12 +30,12 @@ describe 'GPTP::DB' do
 
     # get_volunteer
     it "returns a volunteer object" do
-      volunteer = db.get_volunteer(user1.name)
-      expect(volunteer).to be_a(RPS::Volunteer)
+      volunteer = db.get_volunteer(volunteer1.name)
+      expect(volunteer).to be_a(GPTP::Volunteer)
       expect(volunteer.name).to eq("Susie")
       expect(volunteer.password).to eq("123abc")
       expect(volunteer1.age).to eq(21)
-      rspexpect(volunteer1.id).to be_a(Fixnum)
+      expect(volunteer1.id).to be_a(Fixnum)
     end
 
     # update_volunteer

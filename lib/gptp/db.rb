@@ -53,7 +53,7 @@ class GPTP::DB
 
   # Penny CRUD methods
   def build_penny(data)
-    RPS::Penny.new(data)
+    GPTP::Penny.new(data)
   end
 
   def create_penny(data)
@@ -141,8 +141,22 @@ class GPTP::DB
   end
 
   # Volunteer CRUD methods
-  # def
-  # end
+  def create_volunteer(data)
+    @db.execute("INSERT INTO volunteers(name, password, age) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}');")
+    data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
+    build_volunteer(data)
+  end
+
+  def get_volunteer(name)
+    volunteer = @db.execute("SELECT * FROM volunteers where name='#{name}';").flatten
+    hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3]}
+    build_volunteer(hash)
+  end
+
+  def build_volunteer(data)
+    GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age])
+  end
+
   # testing helper method
   def clear_table(table_name)
     @db.execute("delete from '#{table_name}';")
