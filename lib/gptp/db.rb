@@ -10,12 +10,13 @@ class GPTP::DB
         id integer,
         name text NOT NULL UNIQUE,
         description text NOT NULL,
-        company text NOT NULL,
+        org_id integer NOT NULL,
         time_requirement text NOT NULL,
         time text,
         day text,
         location text,
         status text,
+        vol_id integer,
         PRIMARY KEY (id)
       )
       SQL
@@ -61,8 +62,8 @@ class GPTP::DB
 
   def create_penny(data)
     @db.execute(
-      "INSERT INTO pennies (name, description, company, time_requirement, time, day, location)
-      VALUES (?,?,?,?,?,?,?)", data[:name], data[:description], data[:company], data[:time_requirement], data[:time], data[:day], data[:location], 0
+      "INSERT INTO pennies (name, description, org_id, time_requirement, time, day, location, status, vol_id)
+      VALUES (?,?,?,?,?,?,?)", data[:name], data[:description], data[:org_id], data[:time_requirement], data[:time], data[:day], data[:location], 0, data[:vol_id]
     )
 
     data =
@@ -77,12 +78,13 @@ class GPTP::DB
       id: data[0],
       name: data[1],
       description: data[2],
-      company: data[3],
+      org_id: data[3],
       time_requirement: data[4],
       time: data[5],
       day: data[6],
       location: data[7],
-      status: data[8]
+      status: data[8],
+      vol_id: data[9]
     }
 
     build_penny(data_hash)
@@ -107,12 +109,13 @@ class GPTP::DB
       id: data[0],
       name: data[1],
       description: data[2],
-      company: data[3],
+      org_id: data[3],
       time_requirement: data[4],
       time: data[5],
       day: data[6],
       location: data[7],
-      status: data[8]
+      status: data[8],
+      vol_id: data[9]
     }
 
     build_penny(data_hash)
@@ -132,12 +135,13 @@ class GPTP::DB
       id: data[0],
       name: data[1],
       description: data[2],
-      company: data[3],
+      org_id: data[3],
       time_requirement: data[4],
       time: data[5],
       day: data[6],
       location: data[7],
-      status: data[8]
+      status: data[8],
+      vol_id: data[9]
     }
 
     build_penny(data_hash)
