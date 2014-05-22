@@ -138,9 +138,9 @@ describe 'GPTP::DB' do
     it 'gets penny' do
       t = Time.now
       today = "#{t.year} #{t.month} #{t.day}"
-      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, location: "dog park")
       penny2 = db.get_penny(1)
-      # p penny2
+      p penny2
       expect(penny2).to be_a(Penny)
     end
 

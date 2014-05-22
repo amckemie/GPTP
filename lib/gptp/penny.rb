@@ -17,3 +17,4 @@ class GPTP::Penny
   end
 
 end
+
