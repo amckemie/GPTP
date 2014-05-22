@@ -45,15 +45,6 @@ class GPTP::DB
         )
       SQL
     )
-    @db.execute( <<-SQL
-      CREATE TABLE if not exists volunteers_pennies(
-        id integer,
-        penny_id integer,
-        vol_id integer,
-        PRIMARY KEY(id)
-        )
-      SQL
-    )
   end
 
   # Penny CRUD methods
@@ -174,20 +165,20 @@ class GPTP::DB
   end
 
   def get_volunteer(email)
-    volunteer = @db.execute("SELECT * FROM volunteers where name='#{email}';").flatten
+    volunteer = @db.execute("SELECT * FROM volunteers where email='#{email}';").flatten
     hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3], email: volunteer[4]}
     build_volunteer(hash)
   end
 
-  def update_volunteer(id, data)
+  def update_volunteer(email, data)
     data.each do |key, value|
-      @db.execute("UPDATE volunteers SET '#{key}' = '#{value}' where name='#{name}';")
+      @db.execute("UPDATE volunteers SET '#{key}' = '#{value}' where email='#{email}';")
     end
-    get_volunteer(name)
+    get_volunteer(email)
   end
 
   def remove_volunteer(email)
-    @db.execute("DELETE FROM volunteers where name='#{name}';")
+    @db.execute("DELETE FROM volunteers where email='#{email}';")
   end
 
   def build_volunteer(data)
@@ -202,9 +193,20 @@ class GPTP::DB
   end
 
   def get_organization(email)
-    organization = @db.execute("SELECT * FROM organizations where name='#{email}';").flatten
+    organization = @db.execute("SELECT * FROM organizations where email='#{email}';").flatten
     hash = {id: organization[0], name: organization[1], password: organization[2], description: organization[3], phone_num: organization[4], address: organization[5], email: organization[6]}
     build_organization(hash)
+  end
+
+  def update_organization(email, data)
+    data.each do |key, value|
+      @db.execute("UPDATE organizations SET '#{key}' = '#{value}' where email='#{email}';")
+    end
+    get_organization(email)
+  end
+
+  def remove_organization(email)
+    @db.execute("DELETE FROM organizations where email='#{email}';")
   end
 
   def build_organization(data)
