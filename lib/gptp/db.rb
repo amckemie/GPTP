@@ -13,9 +13,9 @@ class GPTP::DB
         org_id integer NOT NULL,
         time_requirement text NOT NULL,
         time text,
-        day text,
+        date text,
         location text,
-        status text,
+        status integer,
         vol_id integer,
         PRIMARY KEY (id)
       )
@@ -54,8 +54,8 @@ class GPTP::DB
 
   def create_penny(data)
     @db.execute(
-      "INSERT INTO pennies (name, description, org_id, time_requirement, time, day, location, status, vol_id)
-      VALUES (?,?,?,?,?,?,?)", data[:name], data[:description], data[:org_id], data[:time_requirement], data[:time], data[:day], data[:location], 0, data[:vol_id]
+      "INSERT INTO pennies (name, description, org_id, time_requirement, time, date, location, status, vol_id)
+      VALUES (?,?,?,?,?,?,?,?,?)", data[:name], data[:description], data[:org_id], data[:time_requirement], data[:time], data[:date], data[:location], data[:status], data[:vol_id]
     )
 
     data =
@@ -73,7 +73,7 @@ class GPTP::DB
       org_id: data[3],
       time_requirement: data[4],
       time: data[5],
-      day: data[6],
+      date: data[6],
       location: data[7],
       status: data[8],
       vol_id: data[9]
@@ -84,11 +84,14 @@ class GPTP::DB
 
   def update_penny(id,data)
 
-    @db.execute(
-      "UPDATE pennies
-      SET time = ?
-      WHERE id = ?", data[:time], id
-    )
+    # @db.execute(
+    #   "UPDATE pennies
+    #   SET status = ?
+    #   WHERE id = ?", data[:status], id
+    # )
+    data.each do |key, value|
+      @db.execute("UPDATE pennies SET '#{key}' = '#{value}' where id= ?", id)
+    end
 
     data =
       @db.execute(
@@ -104,13 +107,14 @@ class GPTP::DB
       org_id: data[3],
       time_requirement: data[4],
       time: data[5],
-      day: data[6],
+      date: data[6],
       location: data[7],
       status: data[8],
       vol_id: data[9]
     }
 
     build_penny(data_hash)
+
   end
 
   def get_penny(id)
@@ -130,7 +134,7 @@ class GPTP::DB
       org_id: data[3],
       time_requirement: data[4],
       time: data[5],
-      day: data[6],
+      date: data[6],
       location: data[7],
       status: data[8],
       vol_id: data[9]

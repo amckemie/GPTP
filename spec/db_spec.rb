@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'fileutils'
+require 'time'
 
 describe 'GPTP::DB' do
   let(:db) do
@@ -95,8 +96,33 @@ describe 'GPTP::DB' do
   end
 
   describe 'pennies' do
-    it 'creates a penny' do
 
+    it 'creates a penny' do
+      t = Time.now
+      today = "#{t.year} #{t.month} #{t.day}"
+      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+      p penny
+      expect(penny).to be_a(Penny)
     end
+
+    it 'updates penny' do
+      t = Time.now
+      today = "#{t.year} #{t.month} #{t.day}"
+      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+      # p penny
+      penny = db.update_penny(1, {status: 1})
+      # p penny
+      expect(penny.status).to eq 1
+    end
+
+    it 'gets penny' do
+      t = Time.now
+      today = "#{t.year} #{t.month} #{t.day}"
+      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+      penny2 = db.get_penny(1)
+      # p penny2
+      expect(penny2).to be_a(Penny)
+    end
+
   end
 end
