@@ -2,9 +2,9 @@ require 'spec_helper.rb'
 
 describe GPTP::SignIn do
   before(:each) do
-    RPS.db.clear_table("pennies")
-    RPS.db.clear_table("volunteers")
-    RPS.db.clear_table("organizations")
+    GPTP.db.clear_table("pennies")
+    GPTP.db.clear_table("volunteers")
+    GPTP.db.clear_table("organizations")
   end
 
   let(:user1) {GPTP.db.create_volunteer(name: "Susie", password: "123abc", age: 21, email: "susie@gmail.com")}
