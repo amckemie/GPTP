@@ -1,6 +1,6 @@
 require 'pry'
 class GPTP::DB
-
+  attr_writer :db
   def initialize
     # Database method
     @db = SQLite3::Database.new "test.db"
@@ -8,23 +8,52 @@ class GPTP::DB
     @db.execute( <<-SQL
       CREATE TABLE if not exists pennies (
         id integer,
-        name string NOT NULL UNIQUE,
-        description string NOT NULL,
-        company string NOT NULL,
-        time_requirement string NOT NULL,
-        time string,
-        day string,
-        location string,
-        status string,
+        name text NOT NULL UNIQUE,
+        description text NOT NULL,
+        company text NOT NULL,
+        time_requirement text NOT NULL,
+        time text,
+        day text,
+        location text,
+        status text,
         PRIMARY KEY (id)
       )
       SQL
     )
-
+    @db.execute( <<-SQL
+      CREATE TABLE if not exists volunteers(
+        id integer,
+        name text,
+        password text,
+        age integer,
+        PRIMARY KEY(id)
+        )
+      SQL
+    )
+    @db.execute( <<-SQL
+      CREATE TABLE if not exists organizations(
+        id integer,
+        name text,
+        password text,
+        description text,
+        PRIMARY KEY(id)
+        )
+      SQL
+    )
+    @db.execute( <<-SQL
+      CREATE TABLE if not exists volunteers_pennies(
+        id integer,
+        penny_id integer,
+        vol_id integer,
+        PRIMARY KEY(id)
+        )
+      SQL
+    )
   end
 
+  # Penny CRUD methods
   def build_penny(data)
-    RPS::Penny.new(data)
+    GPTP::Penny.new(data)
   end
 
   def create_penny(data)
@@ -109,6 +138,28 @@ class GPTP::DB
     }
 
     build_penny(data_hash)
+  end
+
+  # Volunteer CRUD methods
+  def create_volunteer(data)
+    @db.execute("INSERT INTO volunteers(name, password, age) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}');")
+    data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
+    build_volunteer(data)
+  end
+
+  def get_volunteer(name)
+    volunteer = @db.execute("SELECT * FROM volunteers where name='#{name}';").flatten
+    hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3]}
+    build_volunteer(hash)
+  end
+
+  def build_volunteer(data)
+    GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age])
+  end
+
+  # testing helper method
+  def clear_table(table_name)
+    @db.execute("delete from '#{table_name}';")
   end
 end
 
