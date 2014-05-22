@@ -1,9 +1,9 @@
 require 'pry'
 class GPTP::DB
   attr_writer :db
-  def initialize
+  def initialize(filename)
     # Database method
-    @db = SQLite3::Database.new "test.db"
+    @db = SQLite3::Database.new(filename)
 
     @db.execute( <<-SQL
       CREATE TABLE if not exists pennies (
@@ -26,6 +26,7 @@ class GPTP::DB
         name text,
         password text,
         age integer,
+        email text,
         PRIMARY KEY(id)
         )
       SQL
@@ -36,6 +37,8 @@ class GPTP::DB
         name text,
         password text,
         description text,
+        phone_num integer,
+        address text,
         PRIMARY KEY(id)
         )
       SQL
@@ -142,19 +145,47 @@ class GPTP::DB
 
   # Volunteer CRUD methods
   def create_volunteer(data)
-    @db.execute("INSERT INTO volunteers(name, password, age) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}');")
+    @db.execute("INSERT INTO volunteers(name, password, age, email) values('#{data[:name]}', '#{data[:password]}', '#{data[:age]}', '#{data[:email]}');")
     data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
     build_volunteer(data)
   end
 
   def get_volunteer(name)
     volunteer = @db.execute("SELECT * FROM volunteers where name='#{name}';").flatten
-    hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3]}
+    hash = {id: volunteer[0], name: volunteer[1], password: volunteer[2], age: volunteer[3], email: volunteer[4]}
     build_volunteer(hash)
   end
 
+  def update_volunteer(name, data)
+    data.each do |key, value|
+      @db.execute("UPDATE volunteers SET '#{key}' = '#{value}' where name='#{name}';")
+    end
+    get_volunteer(name)
+  end
+
+  def remove_volunteer(name)
+    @db.execute("DELETE FROM volunteers where name='#{name}';")
+  end
+
   def build_volunteer(data)
-    GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age])
+    GPTP::Volunteer.new(data[:id], data[:name], data[:password], data[:age], data[:email])
+  end
+
+  # Organizations CRUD methods
+  def create_organization(data)
+    @db.execute("INSERT INTO organizations(name, password, description, phone_num, address) values('#{data[:name]}', '#{data[:password]}', '#{data[:description]}', '#{data[:phone_num]}', '#{data[:address]}');")
+    data[:id] = @db.execute('SELECT last_insert_rowid();').flatten.first
+    build_organization(data)
+  end
+
+  def get_organization(data)
+    organization = @db.execute("SELECT * FROM organizations where name='#{name}';").flatten
+    hash = {id: organization[0], name: organization[1], password: organization[2], description: organization[3], phone_num: organization[4], address: organization[5]}
+    build_organization(hash)
+  end
+
+  def build_organization(data)
+    GPTP::Organization.new(data[:id], data[:name], data[:password], data[:description], data[:phone_num], data[:address])
   end
 
   # testing helper method
@@ -165,6 +196,6 @@ end
 
 module GPTP
   def self.db
-    @__db_instance ||= DB.new
+    @__db_instance ||= DB.new("gptp.db")
   end
 end
