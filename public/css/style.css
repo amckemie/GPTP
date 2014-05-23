@@ -6632,7 +6632,31 @@ th.hide-for-touch {
 
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
-  height: 4em; }
+  height: 5em; }
+
+/* line 4, ../sass/mystyles/_topbar.scss */
+.top-bar ul > li.has-dropdown a:after {
+  content: "";
+  display: none;
+  width: 0;
+  height: 0;
+  border: 0;
+  border-color: none;
+  border-left-style: none;
+  margin-right: 0;
+  margin-top: 0;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+/* line 18, ../sass/mystyles/_topbar.scss */
+.title-area {
+  padding: 0.5rem 0 0 0; }
+
+/* line 21, ../sass/mystyles/_topbar.scss */
+.logo {
+  width: 4rem;
+  height: 4rem; }
 
 /* line 1, ../sass/mystyles/_footer.scss */
 .footer {
