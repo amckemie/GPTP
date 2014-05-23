@@ -54,7 +54,19 @@ describe GPTP::GetPennies do
       expect(vol_test[:past_pennies].length).to eq(1)
     end
 
-    xit 'should return true with array of the users past and present pennies' do
+    it 'should return true with array of the users past and present pennies' do
+      org1
+      user1
+      penny1
+      penny2
+      takepenny1
+      takepenny2
+      expect(org_test[:success?]).to eq(true)
+      expect(org_test[:past_pennies].length).to eq(1)
+      expect(org_test[:upcoming_pennies].length).to eq(1)
+      expect(vol_test[:success?]).to eq(true)
+      expect(vol_test[:past_pennies].length).to eq(1)
+      expect(vol_test[:upcoming_pennies].length).to eq(1)
     end
   end
 
