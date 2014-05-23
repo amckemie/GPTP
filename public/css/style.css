@@ -6709,9 +6709,10 @@ body {
 
 /* line 14, ../sass/mystyles/_body.scss */
 .container {
-  padding-top: 5em; }
+  padding-top: 5em;
+  padding-bottom: 2em; }
 
-/* line 17, ../sass/mystyles/_body.scss */
+/* line 18, ../sass/mystyles/_body.scss */
 * {
   font-family: Satelllite; }
 
@@ -6750,9 +6751,10 @@ body {
 
 /* line 14, ../sass/mystyles/_body.scss */
 .container {
-  padding-top: 5em; }
+  padding-top: 5em;
+  padding-bottom: 2em; }
 
-/* line 17, ../sass/mystyles/_body.scss */
+/* line 18, ../sass/mystyles/_body.scss */
 * {
   font-family: Satelllite; }
 
