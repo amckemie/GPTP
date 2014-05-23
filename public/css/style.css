@@ -1,3 +1,4 @@
+@charset "ISO-8859-1";
 /* line 311, ../sass/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/5.2.2/"; }
@@ -6632,11 +6633,10 @@ th.hide-for-touch {
 
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
-  height: 4em;
   height: 3.3em;
   margin-bottom: 5rem; }
 
-/* line 7, ../sass/mystyles/_topbar.scss */
+/* line 6, ../sass/mystyles/_topbar.scss */
 .top-bar ul > li.has-dropdown a:after {
   content: "";
   display: none;
@@ -6651,28 +6651,32 @@ th.hide-for-touch {
   top: 0;
   right: 0; }
 
-/* line 21, ../sass/mystyles/_topbar.scss */
+/* line 20, ../sass/mystyles/_topbar.scss */
 .title-area {
   padding: 0.5rem 0 0 0; }
 
-/* line 24, ../sass/mystyles/_topbar.scss */
+/* line 23, ../sass/mystyles/_topbar.scss */
 .logo {
   width: 3rem;
   height: 3rem; }
 
-/* line 28, ../sass/mystyles/_topbar.scss */
+/* line 27, ../sass/mystyles/_topbar.scss */
 .slogan {
   color: white;
   padding: 1rem 1rem 0 0;
   font-size: 1.5rem;
   font-family: Satellite; }
 
-/* line 34, ../sass/mystyles/_topbar.scss */
+/* line 33, ../sass/mystyles/_topbar.scss */
 .user {
   padding: .55rem 1rem 0 0; }
-  /* line 36, ../sass/mystyles/_topbar.scss */
+  /* line 35, ../sass/mystyles/_topbar.scss */
   .user.buttons {
     padding: .65rem; }
+
+/* line 39, ../sass/mystyles/_topbar.scss */
+.three-lines {
+  padding: .5em 0 0 1.4em; }
 
 /* line 1, ../sass/mystyles/_footer.scss */
 .footer {
@@ -6720,7 +6724,7 @@ body {
 /* line 22, ../sass/mystyles/_body.scss */
 .container {
   padding-top: 5em;
-  padding-bottom: 2em; }
+  padding-bottom: 2.5em; }
 
 /* line 26, ../sass/mystyles/_body.scss */
 .vol-div {
@@ -6825,7 +6829,7 @@ body {
 /* line 22, ../sass/mystyles/_body.scss */
 .container {
   padding-top: 5em;
-  padding-bottom: 2em; }
+  padding-bottom: 2.5em; }
 
 /* line 26, ../sass/mystyles/_body.scss */
 .vol-div {
@@ -8904,3 +8908,12 @@ th.penny-header {
 table.penny {
   margin-bottom: 3rem;
   width: 30rem; }
+
+@font-face {
+  font-family: 'Satellite';
+  src: url("../fonts/satellite.otf") format("otf"), url("../fonts/satellite.otf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */ }
+@font-face {
+  font-family: 'Satellite Oblique';
+  src: url("../fonts/satellite-oblique.otf") format("otf"), url("../fonts/satellite-oblique.otf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */ }

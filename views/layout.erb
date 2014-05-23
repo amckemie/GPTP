@@ -17,6 +17,12 @@
     </head>
     <body>
       <%= yield %>
-      <script src="/js/foundation.min.js"></script>
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/foundation.min.js"></script>
+      <script type="text/javascript" src="/js/foundation.topbar.js"></script>
+      <script type="text/javascript" src="/js/foundation.dropdown.js"></script>
+      <script type="text/javascript">
+            $(document).foundation();
+      </script>
     </body>
 </html>
