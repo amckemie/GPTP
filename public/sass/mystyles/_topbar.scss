@@ -1,5 +1,5 @@
 .top-bar {
-  height: 5em;
+  height: 4em;
   margin-bottom: 5em;
 }
 // Gets rid of arrow for dropdown button
@@ -21,18 +21,18 @@
   padding: 0.5rem 0 0 0;
 }
 .logo {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
 }
 .slogan{
   color:white;
   padding: 1rem 1rem 0 0;
-  font-size: 30px;
+  font-size: 1.5rem;
 }
 
 .user {
-  padding: .55rem 2rem 0 0;
+  padding: .55rem 1rem 0 0;
   &.buttons{
-    padding-top: 1.2rem;
+    padding: 2rem 1rem;
   }
 }
