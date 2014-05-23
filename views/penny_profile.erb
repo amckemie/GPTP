@@ -1,0 +1,49 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GPTP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    *{
+      -webkit-box-sizing: border-box;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <% if @new_player %>
+    Welcome, <%= @new_player.name %> . Please sign in
+  <% end %>
+
+  <% if session[:error] %>
+    <%= session[:error] %>
+    <% session[:error] = nil %>
+  <% end %>
+<!-- Top Bar -->
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar data-options="sticky_on: large">
+    <a href="#" class="button penny_profile" >AlL Pennies</a>
+  </nav>
+</div>
+
+
+  <!-- body -->
+  <div class="row">
+    <ul class="pricing-table">
+      <li class="title">Organization</li>
+      <li class="price">Name of the event</li>
+      <li class="description">An awesome description</li>
+      <li class="bullet-item">When</li>
+      <li class="bullet-item">Where</li>
+      <li class="bullet-item">How Long</li>
+      <li class="cta-button"><a class="button" href="#">Take the Penny!</a></li>
+    </ul>
+  </div>
+  <script src="/js/foundation.min.js"></script>
+</body>
+</html>

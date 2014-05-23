@@ -19,3 +19,7 @@ end
 post '/organization' do
   erb :organization, :layout => :users
 end
+
+get '/penny_profile' do
+  erb :penny_profile
+end

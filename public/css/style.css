@@ -6643,3 +6643,8 @@ th.hide-for-touch {
   .footer ul {
     margin: 0 auto;
     vertical-align: middle; }
+
+/* line 1, ../sass/mystyles/_buttons.scss */
+.penny_profile {
+  margin: 0 auto;
+  width: 100%; }
