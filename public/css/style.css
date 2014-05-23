@@ -6694,17 +6694,18 @@ th.hide-for-touch {
 
 /* line 2, ../sass/mystyles/_body.scss */
 * {
-  font-family: Satellite; }
+  font-family: Satellite;
+  font-size: 20px; }
 
-/* line 5, ../sass/mystyles/_body.scss */
+/* line 6, ../sass/mystyles/_body.scss */
 .pennies {
   margin: -1rem; }
-  /* line 7, ../sass/mystyles/_body.scss */
+  /* line 8, ../sass/mystyles/_body.scss */
   .pennies h3 {
     margin-left: 4rem;
     margin: 0 auto; }
 
-/* line 12, ../sass/mystyles/_body.scss */
+/* line 13, ../sass/mystyles/_body.scss */
 body {
   background-image: url("../images/background.png");
   background-repeat: repeat-y;
@@ -6712,33 +6713,41 @@ body {
   background-position: cover;
   font-family: Satelllite; }
 
-/* line 19, ../sass/mystyles/_body.scss */
+/* line 20, ../sass/mystyles/_body.scss */
 .container {
   padding-top: 5em;
   padding-bottom: 2em; }
 
-/* line 23, ../sass/mystyles/_body.scss */
+/* line 24, ../sass/mystyles/_body.scss */
 .vol-div {
   margin-left: -3em;
-  width: 27em; }
+  width: 22em; }
 
-/* line 27, ../sass/mystyles/_body.scss */
+/* line 28, ../sass/mystyles/_body.scss */
 .coin-img {
   position: fixed;
   top: 46%;
   left: 46%; }
 
-/* line 32, ../sass/mystyles/_body.scss */
+/* line 33, ../sass/mystyles/_body.scss */
 .org-div {
-  width: 30em;
+  width: 25em;
   margin-right: -6em; }
 
-/* line 36, ../sass/mystyles/_body.scss */
-.pennies {
-  margin: 4rem 0; }
-  /* line 38, ../sass/mystyles/_body.scss */
-  .pennies h3 {
-    margin-left: 4rem; }
+/* line 37, ../sass/mystyles/_body.scss */
+h2 {
+  font-family: Satellite;
+  padding-top: 1em;
+  padding-bottom: 2em; }
+
+/* line 42, ../sass/mystyles/_body.scss */
+h3 {
+  font-family: Satellite;
+  padding-bottom: 2em; }
+
+/* line 46, ../sass/mystyles/_body.scss */
+.heading-padding {
+  padding-bottom: 11em; }
 
 /* line 2, ../sass/mystyles/_buttons.scss */
 .penny_profile {
@@ -6748,9 +6757,11 @@ body {
 /* line 6, ../sass/mystyles/_buttons.scss */
 .button {
   background: #F7CA10;
-  color: #333; }
+  color: #333;
+  font-family: Satellite;
+  padding: 1em 1.5em; }
 
-/* line 10, ../sass/mystyles/_buttons.scss */
+/* line 12, ../sass/mystyles/_buttons.scss */
 .button:hover, .button:focus {
   background: #F5AB35;
   color: #333; }
@@ -6769,22 +6780,27 @@ fieldset legend {
   background: none; }
 
 /* line 7, ../sass/mystyles/_forms.scss */
+textarea {
+  color: #333; }
+
+/* line 10, ../sass/mystyles/_forms.scss */
 .fa-facebook-square {
   color: red; }
 
 /* line 2, ../sass/mystyles/_body.scss */
 * {
-  font-family: Satellite; }
+  font-family: Satellite;
+  font-size: 20px; }
 
-/* line 5, ../sass/mystyles/_body.scss */
+/* line 6, ../sass/mystyles/_body.scss */
 .pennies {
   margin: -1rem; }
-  /* line 7, ../sass/mystyles/_body.scss */
+  /* line 8, ../sass/mystyles/_body.scss */
   .pennies h3 {
     margin-left: 4rem;
     margin: 0 auto; }
 
-/* line 12, ../sass/mystyles/_body.scss */
+/* line 13, ../sass/mystyles/_body.scss */
 body {
   background-image: url("../images/background.png");
   background-repeat: repeat-y;
@@ -6792,33 +6808,41 @@ body {
   background-position: cover;
   font-family: Satelllite; }
 
-/* line 19, ../sass/mystyles/_body.scss */
+/* line 20, ../sass/mystyles/_body.scss */
 .container {
   padding-top: 5em;
   padding-bottom: 2em; }
 
-/* line 23, ../sass/mystyles/_body.scss */
+/* line 24, ../sass/mystyles/_body.scss */
 .vol-div {
   margin-left: -3em;
-  width: 27em; }
+  width: 22em; }
 
-/* line 27, ../sass/mystyles/_body.scss */
+/* line 28, ../sass/mystyles/_body.scss */
 .coin-img {
   position: fixed;
   top: 46%;
   left: 46%; }
 
-/* line 32, ../sass/mystyles/_body.scss */
+/* line 33, ../sass/mystyles/_body.scss */
 .org-div {
-  width: 30em;
+  width: 25em;
   margin-right: -6em; }
 
-/* line 36, ../sass/mystyles/_body.scss */
-.pennies {
-  margin: 4rem 0; }
-  /* line 38, ../sass/mystyles/_body.scss */
-  .pennies h3 {
-    margin-left: 4rem; }
+/* line 37, ../sass/mystyles/_body.scss */
+h2 {
+  font-family: Satellite;
+  padding-top: 1em;
+  padding-bottom: 2em; }
+
+/* line 42, ../sass/mystyles/_body.scss */
+h3 {
+  font-family: Satellite;
+  padding-bottom: 2em; }
+
+/* line 46, ../sass/mystyles/_body.scss */
+.heading-padding {
+  padding-bottom: 11em; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome

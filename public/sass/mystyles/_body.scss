@@ -1,6 +1,7 @@
 
 *{
   font-family: Satellite;
+  font-size: 20px;
 }
 .pennies {
   margin: -1rem;
@@ -22,7 +23,7 @@ body {
 }
 .vol-div{
   margin-left: -3em;
-  width: 27em;
+  width: 22em;
 }
 .coin-img{
   position: fixed;
@@ -30,12 +31,18 @@ body {
   left: 46%;
 }
 .org-div{
-  width: 30em;
+  width: 25em;
   margin-right: -6em;
 }
-.pennies {
-  margin: 4rem 0;
-  h3 {
-    margin-left: 4rem;
-  }
+h2{
+  font-family: Satellite;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+h3{
+  font-family: Satellite;
+  padding-bottom: 2em;
+}
+.heading-padding{
+  padding-bottom: 11em;
 }
