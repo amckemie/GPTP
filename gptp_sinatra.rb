@@ -12,11 +12,26 @@ get '/' do
   erb :home
 end
 
-get '/volunteer' do
-  @name = params[:name]
+post '/volunteer' do
+  @result = GPTP::SignIn(params[:email], params[:password])
+  if @result[:success?]
+    session[:user] = @result[:volunteer]
+    erb :volunteer
+  else
+    session[:error] = @result[:error]
+    redirect '/'
+  end
   erb :volunteer
 end
 
-get '/organization' do
+post '/organization' do
+  @result = GPTP::SignIn(params[:email], params[:password])
+  if @result[:success?]
+    session[:user] = @result[:volunteer]
+    erb :volunteer
+  else
+    session[:error] = @result[:error]
+    redirect '/'
+  end
   erb :organization
 end
