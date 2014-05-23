@@ -27,3 +27,10 @@
   padding: 1rem 1rem 0 0;
   font-size: 30px;
 }
+
+.user {
+  padding: .55rem 2rem 0 0;
+  &.buttons{
+    padding-top: 1.2rem;
+  }
+}
