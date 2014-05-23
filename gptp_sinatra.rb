@@ -1,6 +1,7 @@
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
+require "sinatra/content_for"
 require_relative './lib/gptp.rb'
 
 set :bind, '0.0.0.0'
@@ -11,11 +12,11 @@ get '/' do
   erb :home
 end
 
-post '/volunteer' do
-  @name = params[:name]
-  erb :volunteer, :layout => :users
+get '/volunteer' do
+  # @name = params[:name]
+  erb :volunteer
 end
 
-post '/organization' do
-  erb :organization, :layout => :users
+get '/organization' do
+  erb :organization
 end
