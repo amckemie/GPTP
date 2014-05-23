@@ -19,7 +19,7 @@
   <nav class="top-bar" data-topbar>
     <ul class="title-area">
       <li class="name">
-        <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
+        <h1><a href="/"><img class="logo" src="images/gptplogo.png"></a></h1>
       </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -62,17 +62,19 @@
             </tr>
           </thead>
           <tbody>
-            <% if @pennies.length == 0 %>
+            <% if @pennies[:success?] == false %>
               <tr colspan="2">You have no pennies</tr>
-            <% else %>
-              <% @pennies.each do |penny| %>
-                <tr>
-                  <td><%= penny.date %></td>
-                  <td><%= penny.name %></td>
-                  <td><%= penny.org_id %></td>
-                  <td><%= penny.time_requirement %></td>
-                </tr>
-              <% end %>
+            <% elsif @pennies[:past_pennies] == nil %>
+                <%= @pennies[:error] %>
+              <% else %>
+                <% @pennies[past_pennies].each do |penny| %>
+                  <tr>
+                    <td><%= penny.date %></td>
+                    <td><%= penny.name %></td>
+                    <td><%= penny.org_id %></td>
+                    <td><%= penny.time_requirement %></td>
+                  </tr>
+                <% end %>
             <% end %>
           </tbody>
         </table>
@@ -91,10 +93,12 @@
             </tr>
           </thead>
           <tbody>
-            <% if @pennies.length == 0 %>
-              <tr colspan="2">You have no pennies</tr>
+            <% if @pennies[:success?] == false %>
+              <tr colspan="2"><%= @pennies[:error] %></tr>
+            <% elsif @pennies[:upcoming_pennies] == nil %>
+              <%= @pennies[:error%>
             <% else %>
-              <% @pennies.each do |penny| %>
+              <% @pennies[:upcoming_pennies].each do |penny| %>
                 <tr>
                   <td><%= penny.date %></td>
                   <td><%= penny.location %></td>
@@ -112,9 +116,9 @@
   <!-- footer -->
   <div class="small-12 medium-12 large-12 columns footer">
     <ul>
-      <li><i class="fa fa-facebook-square fa-2x"></i>Facebook</li>
-      <li><i class="fa fa-camera-retro fa-2x"></i>Github</li>
-      <li><i class="fa fa-camera-retro fa-2x"></i>Twitter</li>
+      <li><i class="fa fa-facebook-square fa-lg"></i></li>
+      <li><i class="fa fa-github-square fa-lg"></i></li>
+      <li><i class="fa fa-twitter-square fa-lg"></i></li>
     </ul>
   </div>
   <script src="/js/foundation.min.js"></script>

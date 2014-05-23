@@ -13,26 +13,35 @@ get '/' do
 end
 
 get '/volunteer' do
-  t = Time.now
-  today = "#{t.year} #{t.month} #{t.day}"
-  GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-  t = Time.now
-  today = "#{t.year} #{t.month} #{t.day}"
-  GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-  @pennies = GPTP.db.list_pennies
-  # pennies = GPTP::GetPennies.new.run
-  erb :volunteer
+  if session[:user] == nil
+    erb :error
+  else
+    # t = Time.now
+    # today = "#{t.year} #{t.month} #{t.day}"
+    # GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+    # t = Time.now
+    # today = "#{t.year} #{t.month} #{t.day}"
+    # GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+    # @pennies = GPTP.db.list_pennies
+    email = session[:user].email
+    @pennies = GPTP::GetPennies.new.run(volunteer: email)
+    erb :volunteer
+  end
 end
 
 get '/organization' do
-  t = Time.now
-  today = "#{t.year} #{t.month} #{t.day}"
-  GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-  t = Time.now
-  today = "#{t.year} #{t.month} #{t.day}"
-  GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-  @pennies = GPTP.db.list_pennies
-  erb :organization
+  if session[:user] == nil
+    erb :error
+  else
+    t = Time.now
+    today = "#{t.year} #{t.month} #{t.day}"
+    GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+    t = Time.now
+    today = "#{t.year} #{t.month} #{t.day}"
+    GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+    @pennies = GPTP.db.list_pennies
+    erb :organization
+  end
 end
 
 post '/volunteer-sign-in' do
