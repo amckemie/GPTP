@@ -22,9 +22,9 @@ get '/organization' do
 end
 
 post '/volunteer-sign-in' do
-  @result = GPTP::SignIn.new.run(params[:email], params[:password])
+  @result = GPTP::SignIn.new.run(params[:email], params[:password], true)
   if @result[:success?]
-    session[:user] = @result[:volunteer]
+    session[:user] = @result[:user]
     redirect '/volunteer'
   else
     session[:error] = @result[:error]
@@ -35,7 +35,7 @@ end
 post '/volunteer-sign-up' do
   @result = GPTP::VolunteerSignUp.new.run(params)
   if @result[:success?]
-    session[:user] = @result[:volunteer]
+    session[:user] = @result[:user]
     redirect 'volunteer'
 
   else
@@ -45,9 +45,9 @@ post '/volunteer-sign-up' do
 end
 
 post '/organization-sign-in' do
-  @result = GPTP::SignIn.new.run(params[:email], params[:password])
+  @result = GPTP::SignIn.new.run(params[:email], params[:password], false)
   if @result[:success?]
-    session[:user] = @result[:organization]
+    session[:user] = @result[:user]
     redirect '/organization'
   else
     session[:org_error] = @result[:error]
@@ -58,7 +58,7 @@ end
 post '/organization-sign-up' do
   @result = GPTP::OrganizationSignUp.new.run(params)
   if @result[:success?]
-    session[:user] = @result[:volunteer]
+    session[:user] = @result[:user]
     redirect '/organization'
   else
     session[:error] = @result[:error]
