@@ -6634,7 +6634,7 @@ th.hide-for-touch {
 .top-bar {
   height: 5em; }
 
-/* line 4, ../sass/mystyles/_topbar.scss */
+/* line 5, ../sass/mystyles/_topbar.scss */
 .top-bar ul > li.has-dropdown a:after {
   content: "";
   display: none;
@@ -6649,16 +6649,16 @@ th.hide-for-touch {
   top: 0;
   right: 0; }
 
-/* line 18, ../sass/mystyles/_topbar.scss */
+/* line 19, ../sass/mystyles/_topbar.scss */
 .title-area {
   padding: 0.5rem 0 0 0; }
 
-/* line 21, ../sass/mystyles/_topbar.scss */
+/* line 22, ../sass/mystyles/_topbar.scss */
 .logo {
   width: 4rem;
   height: 4rem; }
 
-/* line 25, ../sass/mystyles/_topbar.scss */
+/* line 26, ../sass/mystyles/_topbar.scss */
 .slogan {
   color: white;
   padding: 1rem 1rem 0 0;
@@ -6682,3 +6682,10 @@ th.hide-for-touch {
       display: inline-block;
       list-style: none;
       padding: 1rem; }
+
+/* line 1, ../sass/mystyles/_body.scss */
+body {
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: cover; }
