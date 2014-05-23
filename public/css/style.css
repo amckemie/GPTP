@@ -6632,10 +6632,9 @@ th.hide-for-touch {
 
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
-  height: 4em;
-  margin-bottom: 5em; }
+  height: 4em; }
 
-/* line 6, ../sass/mystyles/_topbar.scss */
+/* line 5, ../sass/mystyles/_topbar.scss */
 .top-bar ul > li.has-dropdown a:after {
   content: "";
   display: none;
@@ -6650,26 +6649,26 @@ th.hide-for-touch {
   top: 0;
   right: 0; }
 
-/* line 20, ../sass/mystyles/_topbar.scss */
+/* line 19, ../sass/mystyles/_topbar.scss */
 .title-area {
   padding: 0.5rem 0 0 0; }
 
-/* line 23, ../sass/mystyles/_topbar.scss */
+/* line 22, ../sass/mystyles/_topbar.scss */
 .logo {
   width: 3rem;
   height: 3rem; }
 
-/* line 27, ../sass/mystyles/_topbar.scss */
+/* line 26, ../sass/mystyles/_topbar.scss */
 .slogan {
   color: white;
   padding: 1rem 1rem 0 0;
   font-size: 1.5rem;
   font-family: Satellite; }
 
-/* line 33, ../sass/mystyles/_topbar.scss */
+/* line 32, ../sass/mystyles/_topbar.scss */
 .user {
   padding: .55rem 1rem 0 0; }
-  /* line 35, ../sass/mystyles/_topbar.scss */
+  /* line 34, ../sass/mystyles/_topbar.scss */
   .user.buttons {
     padding: .65rem; }
 
