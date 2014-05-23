@@ -35,6 +35,7 @@
       <th width="150">Organization</th>
       <th width="150">Location</th>
       <th width="150">Date</th>
+      <th width="150">ID</th>
     </tr>
   </thead>
   <tbody>
@@ -42,11 +43,18 @@
       <form action ='/penny_profile' method = 'post'>
       <tr>
         <td><button type = "submit">Take ME</button></td>
-        <td type = "text" name = "name"><%= elem.name %></td>
-        <td type = "text" name = "description"><%= elem.description %></td>
-        <td type = "text" name = "organization"><%= elem.org_id %></td>
-        <td type = "text" name = "location"><%= elem.location %></td>
-        <td type = "text" name = "date" ><%= elem.date %></td>
+        <td ><%= elem.name %></td>
+        <input type = "hidden" name = "name" id ="name" value = <%= elem.name %>>
+        <td ><%= elem.description %></td>
+        <input type = "hidden" name = "description" value = <%= elem.description %>>
+        <td><%= elem.org_id %></td>
+        <input type = "hidden" name = "organization" value = <%= elem.org_id %>>
+        <td><%= elem.location %></td>
+        <input type = "hidden" name = "location" value = <%= elem.location %>>
+        <td><%= elem.date %></td>
+        <input type = "hidden" name = "date" value = <%= elem.date %>>
+        <td><%= elem.id %></td>
+        <input type = "hidden" name = "id" value = <%= elem.id %>>
       </tr>
     </form>
     <% end %>

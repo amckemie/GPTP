@@ -73,6 +73,7 @@ post '/penny_profile' do
   @where = params[:location]
   @how_long = params[:time_requirement]
   @organization =params[:organization]
+  @id = params[:id]
   erb :penny_profile
 end
 
