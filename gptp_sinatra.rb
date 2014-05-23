@@ -13,7 +13,7 @@ get '/' do
 end
 
 get '/volunteer' do
-  # @name = params[:name]
+  @name = params[:name]
   erb :volunteer
 end
 
