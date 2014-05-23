@@ -11,8 +11,12 @@ describe 'GPTP::DB' do
     GPTP::DB.new("test.db")
   end
 
+  before(:each) {@t = Time.now}
+
   let(:volunteer1) {db.create_volunteer(name: "Susie", password: "123abc", age: 21, email: "susie@gmail.com")}
   let(:organization1) {db.create_organization(name: "Doing Good", password: "dgdg", description: "doing good stuff", phone_num: "512-123-4567", address: "123 road drive", email: "org@gmail.com")}
+  let(:penny) {db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: "#{@t.year} #{@t.month} #{@t.day}", status: 0, vol_id: 1, location: "dog park")}
+  let(:penny2) {db.create_penny(name: "test2", description: "have fun", org_id: 1, time_requirement: 3, time: 'noon', date: "#{@t.year} #{@t.month} #{@t.day}", status: 0, vol_id: 1, location: "school")}
 
   it "exists" do
     expect(DB).to be_a(Class)
@@ -118,38 +122,48 @@ describe 'GPTP::DB' do
   describe 'pennies' do
 
     it 'creates a penny' do
-      t = Time.now
-      today = "#{t.year} #{t.month} #{t.day}"
-      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+      penny
       p penny
       expect(penny).to be_a(Penny)
     end
 
     it 'updates penny' do
-      t = Time.now
-      today = "#{t.year} #{t.month} #{t.day}"
-      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-      # p penny
+      penny
       penny = db.update_penny(1, {status: 1})
-      # p penny
       expect(penny.status).to eq 1
     end
 
     it 'gets penny' do
-      t = Time.now
-      today = "#{t.year} #{t.month} #{t.day}"
-      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, location: "dog park")
-      penny2 = db.get_penny(1)
-      p penny2
-      expect(penny2).to be_a(Penny)
+      penny
+      a_penny = db.get_penny(1)
+      p a_penny
+      expect(a_penny).to be_a(Penny)
     end
 
     it "lists all pennies" do
-      t = Time.now
-      today = "#{t.year} #{t.month} #{t.day}"
-      penny = db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-      penn2 = db.create_penny(name: "test2", description: "have fun", org_id: 1, time_requirement: 3, time: 'noon', date: today, status: 0, vol_id: 1, location: "school")
+      penny
+      penny2
       pennies = db.list_pennies
+      expect(pennies.size).to eq(2)
+      expect(pennies[0].name).to eq("test")
+      expect(pennies[1].name).to eq("test2")
+    end
+
+    it 'should list a volunteers pennies' do
+      volunteer1
+      penny
+      penny2
+      pennies = db.vol_pennies(volunteer1.id)
+      expect(pennies.size).to eq(2)
+      expect(pennies[0].name).to eq("test")
+      expect(pennies[1].name).to eq("test2")
+    end
+
+    it 'should list an organizations pennies' do
+      organization1
+      penny
+      penny2
+      pennies = db.org_pennies(organization1.id)
       expect(pennies.size).to eq(2)
       expect(pennies[0].name).to eq("test")
       expect(pennies[1].name).to eq("test2")

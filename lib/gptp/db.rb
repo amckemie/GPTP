@@ -154,7 +154,7 @@ class GPTP::DB
   end
 
   def vol_pennies(vol_id)
-    pennies = @db.execute("SELECT * FROM pennies WHERE vol_id = '#{vol_id}';").flatten
+    pennies = @db.execute("SELECT * FROM pennies WHERE vol_id = '#{vol_id}';")
     vol_pennies = []
     pennies.each do |penny|
       vol_pennies << get_penny(penny[0])
@@ -163,7 +163,7 @@ class GPTP::DB
   end
 
   def org_pennies(org_id)
-    pennies = @db.execute("SELECT * FROM pennies WHERE org_id = '#{org_id}';").flatten
+    pennies = @db.execute("SELECT * FROM pennies WHERE org_id = '#{org_id}';")
     org_pennies = []
     pennies.each do |penny|
       org_pennies << get_penny(penny[0])
