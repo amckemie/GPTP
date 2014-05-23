@@ -17,7 +17,7 @@ get '/volunteer' do
   erb :volunteer
 end
 
-get 'organization' do
+get '/organization' do
   erb :organization
 end
 
@@ -47,10 +47,10 @@ end
 post '/organization-sign-in' do
   @result = GPTP::SignIn.new.run(params[:email], params[:password])
   if @result[:success?]
-    session[:user] = @result[:volunteer]
+    session[:user] = @result[:organization]
     redirect '/organization'
   else
-    session[:error] = @result[:error]
+    session[:org_error] = @result[:error]
     redirect '/'
   end
 end

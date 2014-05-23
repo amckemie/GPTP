@@ -78,10 +78,11 @@
       </div>
   </div>
 </div>
+<!-- Volunteer Sign In -->
 <div class="row">
   <form method="post" action="/volunteer-sign-in">
     <fieldset>
-      <legend>Sign In</legend>
+      <legend> Volunteer Sign In</legend>
 
       <div class="row">
         <div class="large-8 columns">
@@ -89,7 +90,6 @@
           <input type="text" name="email" placeholder="Email">
         </div>
       </div>
-
       <div class="row">
         <div class="large-8 columns">
           <label>Password</label>
@@ -98,20 +98,23 @@
       </div>
       <input class="button" type="submit" value="Sign In">
     </fieldset>
+    <% if session[:error] %>
+    <p><%= session[:error] %></p>
+    <%= session[:error] = nil %>
+  <% end %>
   </form>
 </div>
+<!-- Organization Sign In Form -->
 <div class="row">
   <form method="post" action="/organization-sign-in">
     <fieldset>
-      <legend>Sign In</legend>
-
+      <legend>Organization Sign In</legend>
       <div class="row">
         <div class="large-8 columns">
           <label>Email</label>
           <input type="text" name="email" placeholder="Email">
         </div>
       </div>
-
       <div class="row">
         <div class="large-8 columns">
           <label>Password</label>
@@ -120,8 +123,15 @@
       </div>
       <input class="button" type="submit" value="Sign In">
     </fieldset>
+  <% if session[:org_error] %>
+    <p><%= session[:org_error] %></p>
+    <%= session[:org_error] = nil %>
+  <% end %>
   </form>
 </div>
+
+
+<!-- Volunteer Sign Up Form -->
 <div class="row">
   <form method="post" action="/volunteer-sign-up">
     <fieldset>
@@ -152,13 +162,17 @@
       </div>
       <input class="button" type="submit" value="Sign Up">
     </fieldset>
+    <% if session[:error] %>
+      <p><%= session[:error] %></p>
+      <%= session[:error] = nil %>
+    <% end %>
   </form>
 </div>
+<!-- Organization Sign Up Form -->
 <div class="row">
   <form method="post" action="/organization-sign-up">
     <fieldset>
       <legend>Organization Sign Up</legend>
-
       <div class="row">
         <div class="large-8 columns">
           <label>Name</label>
@@ -195,6 +209,10 @@
       </div>
       <input class="button" type="submit" value="Sign Up">
     </fieldset>
+    <% if session[:error] %>
+      <p><%= session[:error] %></p>
+      <%= session[:error] = nil %>
+    <% end %>
   </form>
 </div>
 

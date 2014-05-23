@@ -1,13 +1,18 @@
 class GPTP::SignIn
-  def run(email, password)
-    volunteer = GPTP.db.get_volunteer(email)
-    if volunteer.name && volunteer.password == password
+  # volunteer is a boolean variable that states whether the user is a volunteer (true) or an organization (false)
+  def run(email, password, volunteer)
+    if volunteer
+      user = GPTP.db.get_volunteer(email)
+    else
+      user = GPTP.db.get_organization(email)
+    end
+    if user.name && user.password == password
       return {
         success?: true,
-        volunteer: volunteer,
+        user: user,
         message: "User successfully signed in."
       }
-    elsif volunteer.name == nil
+    elsif user.name == nil
       return {
         success?: false,
         error: "There is no user with that email."
