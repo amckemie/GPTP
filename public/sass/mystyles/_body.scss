@@ -34,7 +34,7 @@ body {
   width: 25em;
   margin-right: -6em;
 }
-h2{
+.h2{
   font-family: Satellite;
   padding-top: 1em;
   padding-bottom: 2em;
@@ -45,4 +45,10 @@ h3{
 }
 .heading-padding{
   padding-bottom: 11em;
+}
+.fa{
+  color: white;
+}
+.fa:hover{
+  color: #F7CA10;
 }

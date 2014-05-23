@@ -6663,7 +6663,8 @@ th.hide-for-touch {
 .slogan {
   color: white;
   padding: 1rem 1rem 0 0;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  font-family: Satellite; }
 
 /* line 33, ../sass/mystyles/_topbar.scss */
 .user {
@@ -6735,7 +6736,7 @@ body {
   margin-right: -6em; }
 
 /* line 37, ../sass/mystyles/_body.scss */
-h2 {
+.h2 {
   font-family: Satellite;
   padding-top: 1em;
   padding-bottom: 2em; }
@@ -6748,6 +6749,14 @@ h3 {
 /* line 46, ../sass/mystyles/_body.scss */
 .heading-padding {
   padding-bottom: 11em; }
+
+/* line 49, ../sass/mystyles/_body.scss */
+.fa {
+  color: white; }
+
+/* line 52, ../sass/mystyles/_body.scss */
+.fa:hover {
+  color: #F7CA10; }
 
 /* line 2, ../sass/mystyles/_buttons.scss */
 .penny_profile {
@@ -6784,8 +6793,8 @@ textarea {
   color: #333; }
 
 /* line 10, ../sass/mystyles/_forms.scss */
-.fa-facebook-square {
-  color: red; }
+.form-padding {
+  padding-bottom: 1em; }
 
 /* line 2, ../sass/mystyles/_body.scss */
 * {
@@ -6830,7 +6839,7 @@ body {
   margin-right: -6em; }
 
 /* line 37, ../sass/mystyles/_body.scss */
-h2 {
+.h2 {
   font-family: Satellite;
   padding-top: 1em;
   padding-bottom: 2em; }
@@ -6844,6 +6853,14 @@ h3 {
 .heading-padding {
   padding-bottom: 11em; }
 
+/* line 49, ../sass/mystyles/_body.scss */
+.fa {
+  color: white; }
+
+/* line 52, ../sass/mystyles/_body.scss */
+.fa:hover {
+  color: #F7CA10; }
+
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -6852,8 +6869,8 @@ h3 {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("./public/fonts/fontawesome-webfont.eot?v=4.1.0");
-  src: url("./public/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0") format("embedded-opentype"), url("./public/fonts/fontawesome-webfont.woff?v=4.1.0") format("woff"), url("./public/fonts/fontawesome-webfont.ttf?v=4.1.0") format("truetype"), url("./public/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular") format("svg");
+  src: url("../fonts/fontawesome-webfont.eot?v=4.1.0");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff?v=4.1.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.1.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 /* line 4, /vagrant/gptp/public/fonts/_core.scss */
