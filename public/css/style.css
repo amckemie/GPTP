@@ -6632,9 +6632,10 @@ th.hide-for-touch {
 
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
-  height: 5em; }
+  height: 5em;
+  margin-bottom: 5em; }
 
-/* line 5, ../sass/mystyles/_topbar.scss */
+/* line 6, ../sass/mystyles/_topbar.scss */
 .top-bar ul > li.has-dropdown a:after {
   content: "";
   display: none;
@@ -6649,16 +6650,16 @@ th.hide-for-touch {
   top: 0;
   right: 0; }
 
-/* line 19, ../sass/mystyles/_topbar.scss */
+/* line 20, ../sass/mystyles/_topbar.scss */
 .title-area {
   padding: 0.5rem 0 0 0; }
 
-/* line 22, ../sass/mystyles/_topbar.scss */
+/* line 23, ../sass/mystyles/_topbar.scss */
 .logo {
   width: 4rem;
   height: 4rem; }
 
-/* line 26, ../sass/mystyles/_topbar.scss */
+/* line 27, ../sass/mystyles/_topbar.scss */
 .slogan {
   color: white;
   padding: 1rem 1rem 0 0;
@@ -6723,6 +6724,10 @@ form {
 /* line 7, ../sass/mystyles/_body.scss */
 body {
   background-image: url("../images/background.png");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: 100%;
   background-position: cover; }
+
+/* line 7, ../sass/mystyles/_body.scss */
+.container {
+  padding-top: 5em; }

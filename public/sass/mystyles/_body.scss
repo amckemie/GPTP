@@ -6,7 +6,10 @@
 }
 body {
   background-image: url("../images/background.png");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: 100%;
   background-position: cover;
+}
+.container{
+  padding-top: 5em;
 }
