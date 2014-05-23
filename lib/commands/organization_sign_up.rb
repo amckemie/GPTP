@@ -10,7 +10,7 @@ class GPTP::OrganizationSignUp
       organization = GPTP.db.create_organization(name: data[:name], password: data[:password], description: data[:description], phone_num: data[:phone_num], address: data[:address], email: data[:email])
       return {
         success?: true,
-        organization: organization,
+        user: organization,
         message: "Organization successfully signed up."
       }
     end

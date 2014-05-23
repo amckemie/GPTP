@@ -7,6 +7,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
+ <!--  <style>
+      *{
+          -webkit-box-sizing: border-box;
+          border: 1px solid red;
+      }
+  </style> -->
 </head>
 <body>
 <!-- Top Bar -->
@@ -42,11 +48,64 @@
   <!-- body -->
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <div class="small-6 medium-6 large-6 columns pennies" style="background-color: red">
-        <h3>Past Pennies</h3>
+      <div class="small-6 medium-6 large-6 columns pennies past">
+        <table class="penny">
+          <thead>
+            <tr>
+              <th class="penny-header" colspan="4">Past Pennies</th>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Organization</th>
+              <th>Hours</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @pennies.length == 0 %>
+              <tr colspan="2">You have no pennies</tr>
+            <% else %>
+              <% @pennies.each do |penny| %>
+                <tr>
+                  <td><%= penny.date %></td>
+                  <td><%= penny.name %></td>
+                  <td><%= penny.org_id %></td>
+                  <td><%= penny.time_requirement %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-      <div class="small-6 medium-6 large-6 columns pennies" style="background-color: yellow">
-        <h3>Upcoming Pennies</h3>
+      <div class="small-6 medium-6 large-6 columns pennies upcoming">
+        <table class="penny">
+          <thead>
+            <tr>
+              <th class="penny-header" colspan="4">Upcoming Pennies</th>
+            </tr>
+            <tr>
+              <th width="150">Date</th>
+              <th width="200">Location</th>
+              <th width="150">Name</th>
+              <th width="150">Organization</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @pennies.length == 0 %>
+              <tr colspan="2">You have no pennies</tr>
+            <% else %>
+              <% @pennies.each do |penny| %>
+                <tr>
+                  <td><%= penny.date %></td>
+                  <td><%= penny.location %></td>
+                  <td><%= penny.name %></td>
+                  <td><%= penny.org_id %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </div>

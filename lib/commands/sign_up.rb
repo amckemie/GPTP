@@ -10,7 +10,7 @@ class GPTP::VolunteerSignUp
       volunteer = GPTP.db.create_volunteer(name: data[:name], password: data[:password], age: data[:age], email: data[:email])
       return {
         success?: true,
-        volunteer: volunteer,
+        user: volunteer,
         message: "Volunteer successfully signed up."
       }
     end

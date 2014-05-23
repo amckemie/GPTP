@@ -13,11 +13,25 @@ get '/' do
 end
 
 get '/volunteer' do
-  # @name = params[:name]
+  t = Time.now
+  today = "#{t.year} #{t.month} #{t.day}"
+  GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+  t = Time.now
+  today = "#{t.year} #{t.month} #{t.day}"
+  GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+  @pennies = GPTP.db.list_pennies
+  # pennies = GPTP::GetPennies.new.run
   erb :volunteer
 end
 
 get '/organization' do
+  t = Time.now
+  today = "#{t.year} #{t.month} #{t.day}"
+  GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+  t = Time.now
+  today = "#{t.year} #{t.month} #{t.day}"
+  GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+  @pennies = GPTP.db.list_pennies
   erb :organization
 end
 

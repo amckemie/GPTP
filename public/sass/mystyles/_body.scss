@@ -5,9 +5,11 @@
 }
 .pennies {
   margin: -1rem;
-  h3 {
-    margin-left: 4rem;
-    margin: 0 auto;
+  &.past {
+    margin-left: -5rem;
+  }
+  &.upcoming {
+    margin-right: -5rem;
   }
 }
 body {
