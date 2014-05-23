@@ -7,7 +7,7 @@ class GPTP::OrganizationSignUp
         error: "An organization with that email already exists."
       }
     else
-      organization = GPTP.db.create_organization(name: data[:name], password: data[:password], age: data[:age], email: data[:email])
+      organization = GPTP.db.create_organization(name: data[:name], password: data[:password], description: data[:description], phone_num: data[:phone_num], address: data[:address], email: data[:email])
       return {
         success?: true,
         organization: organization,

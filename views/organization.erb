@@ -7,14 +7,13 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
-  <% yield_content :button %>
 </head>
 <body>
 <!-- Top Bar -->
   <nav class="top-bar" data-topbar>
     <ul class="title-area">
       <li class="name">
-        <h1><a href="#">Logo</a></h1>
+        <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
       </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -24,16 +23,16 @@
       <!-- Left Nav Section -->
       <ul class="left">
         <li>
-          <h2>Name</h2>
+          <h2 class="user"><%= session[:user].name%></h2>
         </li>
       </ul>
 
       <!-- Right Nav Section -->
       <ul class="right">
-        <li class="has-form">
-          <a href="#" class="button">Volunteers</a>
+        <li class="user buttons">
+          <a href="/volunteer" class="button">Volunteers</a>
         </li>
-        <li class="has-form">
+        <li class="user buttons">
           <a href="#" class="button">Pennies</a>
         </li>
       </ul>
@@ -43,18 +42,18 @@
   <!-- body -->
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <div class="small-6 medium-6 large-6 columns" style="background-color: red">
-        <p>Past Pennies</p>
+      <div class="small-6 medium-6 large-6 columns pennies" style="background-color: red">
+        <h3>Past Pennies</h3>
       </div>
-      <div class="small-6 medium-6 large-6 columns" style="background-color: yellow">
-        <p>Upcoming Pennies</p>
+      <div class="small-6 medium-6 large-6 columns pennies" style="background-color: yellow">
+        <h3>Upcoming Pennies</h3>
       </div>
     </div>
   </div>
   <!-- footer -->
-  <div class="footer">
+  <div class="small-12 medium-12 large-12 columns footer">
     <ul>
-      <li>Logo</li>
+      <li><a href="#"><img class="logo" src="images/gptplogo.png"></a></li>
       <li>Twitter</li>
       <li>Facebook</li>
     </ul>

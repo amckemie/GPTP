@@ -1,8 +1,10 @@
 .footer {
-  width: 100%;
+  // width: 100%;
   text-align: center;
   position: fixed;
+  height: 4rem;
   bottom: 0;
+  background-color: white;
   ul {
     display: block;
     width: 50%;
@@ -12,8 +14,12 @@
       vertical-align: middle;
       display: inline-block;
       list-style: none;
-      padding: 1rem;
+      padding: .5rem 1rem 2rem 0;
     }
+  }
+  .logo {
+    width: 3rem;
+    height: 3rem;
   }
 }
 

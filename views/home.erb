@@ -1,36 +1,37 @@
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li class="has-dropdown">
-        <a href="#"><div class="three-lines">&#9776;</div></a>
-        <ul class="dropdown menu-button">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
+<div class="fixed">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
       </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li><h2 class="slogan">"Bringing good companies and good people together."</h2></li>
-    </ul>
-  </section>
-</nav>
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li class="has-dropdown">
+          <a href="#"><div class="three-lines">&#9776;</div></a>
+          <ul class="dropdown menu-button">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><h2 class="slogan">"Bringing good companies and good people together."</h2></li>
+      </ul>
+    </section>
+  </nav>
+</div>
 
 <div class="container">
-  <!-- top part of homepage -->
   <div class="row">
       <!-- Volunteer div -->
-      <div class="small-4 medium-4 large-4 columns">
+      <div class="small-4 medium-4 large-4 columns vol-div">
         <div class="row">
           <div class="small-12 medium-12 large-12 columns">
             <h2>Give a penny...</h2>
@@ -51,11 +52,11 @@
         </div>
       </div>
       <!-- Coin div -->
-      <div class="small-4 medium-4 large-4 columns">
+      <div class="small-4 medium-4 large-4 columns coin-div">
         <img src="http://placehold.it/300x300">
       </div>
       <!-- Organizations div -->
-      <div class="small-4 medium-4 large-4 columns">
+      <div class="small-4 medium-4 large-4 columns org-div">
         <div class="row">
           <div class="small-12 medium-12 large-12 columns">
             <h2>Take a penny...</h2>
@@ -76,4 +77,133 @@
         </div>
       </div>
   </div>
+</div>
+<div class="row">
+  <form method="post" action="/volunteer-sign-in">
+    <fieldset>
+      <legend>Sign In</legend>
+
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Email</label>
+          <input type="text" name="email" placeholder="Email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Password</label>
+          <input type="text" name="password" placeholder="Password">
+        </div>
+      </div>
+      <input class="button" type="submit" value="Sign In">
+    </fieldset>
+  </form>
+</div>
+<div class="row">
+  <form method="post" action="/organization-sign-in">
+    <fieldset>
+      <legend>Sign In</legend>
+
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Email</label>
+          <input type="text" name="email" placeholder="Email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Password</label>
+          <input type="text" name="password" placeholder="Password">
+        </div>
+      </div>
+      <input class="button" type="submit" value="Sign In">
+    </fieldset>
+  </form>
+</div>
+<div class="row">
+  <form method="post" action="/volunteer-sign-up">
+    <fieldset>
+      <legend>Volunteer Sign Up</legend>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Email</label>
+          <input type="text" name="email" placeholder="Email">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Password</label>
+          <input type="text" name="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Age</label>
+          <input type="text" name="age" placeholder="Age">
+        </div>
+      </div>
+      <input class="button" type="submit" value="Sign Up">
+    </fieldset>
+  </form>
+</div>
+<div class="row">
+  <form method="post" action="/organization-sign-up">
+    <fieldset>
+      <legend>Organization Sign Up</legend>
+
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Description</label>
+          <input type="text" name="description" placeholder="Description">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Phone Number</label>
+          <input type="text" name="phone_num" placeholder="Phone Number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 columns">
+          <label>Address</label>
+          <input type="text" name="address" placeholder="Address">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Email</label>
+          <input type="text" name="email" placeholder="Email">
+        </div>
+        <div class="large-6 columns">
+          <label>Password</label>
+          <input type="text" name="password" placeholder="Password">
+        </div>
+      </div>
+      <input class="button" type="submit" value="Sign Up">
+    </fieldset>
+  </form>
+</div>
+
+<!-- footer -->
+<div class="small-12 medium-12 large-12 columns footer">
+  <ul>
+    <li><a href="#"><img class="logo" src="images/gptplogo.png"></a></li>
+    <li><i class="fa fa-facebook-square fa-2x"></i>Facebook</li>
+    <li><i class="fa fa-camera-retro fa-2x"></i>Github</li>
+    <li><i class="fa fa-camera-retro fa-2x"></i>Twitter</li>
+  </ul>
 </div>

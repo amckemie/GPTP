@@ -1,6 +1,6 @@
 require 'pry'
 require './lib/gptp.rb'
-require './lib/gptp_sinatra.rb'
+require './gptp_sinatra.rb'
 require 'rspec'
 require 'rack/test'
 require 'capybara/rspec'

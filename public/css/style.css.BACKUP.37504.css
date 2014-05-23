@@ -1,0 +1,49 @@
+/*
+Syntax error: Invalid CSS after "..._buttons.scss",": expected file to import (string or url()), was "<<<<<<< HEAD"
+        on line 50 of ./public/sass/foundation.scss
+
+45:   "foundation/components/visibility",
+46:   "./mystyles/_topbar.scss",
+47:   "./mystyles/_footer.scss",
+48:   "./mystyles/_body.scss",
+49:   "./mystyles/_buttons.scss",
+50: <<<<<<< HEAD
+51:   "./mystyles/_pricingtable.scss",
+52:   "./mystyles/_variables.scss";
+53: =======
+54:   "./mystyles/_variables.scss",
+55:   "./mystyles/_forms.scss",
+
+Backtrace:
+./public/sass/foundation.scss:50
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:1312:in `expected'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:1248:in `expected'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:1228:in `expr!'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:368:in `block in import_directive'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:367:in `loop'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:367:in `import_directive'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:221:in `special_directive'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:193:in `directive'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:659:in `block_child'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:652:in `block_contents'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:116:in `stylesheet'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/scss/parser.rb:41:in `parse'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/engine.rb:409:in `_to_tree'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/engine.rb:274:in `render'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:414:in `update_stylesheet'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:186:in `each'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:393:in `on_file_changed'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:248:in `block in watch'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/vendor/listen/lib/listen/listener.rb:252:in `call'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+/vagrant/hack1/GPTP/vendor/bundle/gems/sass-3.3.7/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"..._buttons.scss\",\": expected file to import (string or url()), was \"<<<<<<< HEAD\"\A         on line 50 of ./public/sass/foundation.scss\A \A 45:   \"foundation/components/visibility\",\A 46:   \"./mystyles/_topbar.scss\",\A 47:   \"./mystyles/_footer.scss\",\A 48:   \"./mystyles/_body.scss\",\A 49:   \"./mystyles/_buttons.scss\",\A 50: <<<<<<< HEAD\A 51:   \"./mystyles/_pricingtable.scss\",\A 52:   \"./mystyles/_variables.scss\";\A 53: =======\A 54:   \"./mystyles/_variables.scss\",\A 55:   \"./mystyles/_forms.scss\","; }

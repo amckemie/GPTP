@@ -1,6 +1,8 @@
 .top-bar {
   height: 5em;
+  margin-bottom: 5em;
 }
+// Gets rid of arrow for dropdown button
 .top-bar ul > li.has-dropdown a:after {
   content: "";
   display: none;
@@ -26,4 +28,11 @@
   color:white;
   padding: 1rem 1rem 0 0;
   font-size: 30px;
+}
+
+.user {
+  padding: .55rem 2rem 0 0;
+  &.buttons{
+    padding-top: 1.2rem;
+  }
 }
