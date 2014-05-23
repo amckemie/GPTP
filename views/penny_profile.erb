@@ -16,10 +16,6 @@
   </style>*/ -->
 </head>
 <body>
-  <% if @new_player %>
-    Welcome, <%= @new_player.name %> . Please sign in
-  <% end %>
-
   <% if session[:error] %>
     <%= session[:error] %>
     <% session[:error] = nil %>

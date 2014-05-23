@@ -33,7 +33,7 @@
           <a href="/volunteer" class="button">Volunteers</a>
         </li>
         <li class="user buttons">
-          <a href="#" class="button">Pennies</a>
+          <a href="/penny_list" class="button">Pennies</a>
         </li>
       </ul>
     </section>
@@ -56,10 +56,12 @@
               </tr>
             </thead>
             <tbody>
-              <% if @pennies.length == 0 %>
-              <tr colspan="2">You have no pennies</tr>
+              <% if @pennies[:success?] == false %>
+                <tr colspan="2">You have no pennies</tr>
+              <% elsif @pennies[:past_pennies] == nil %>
+                  <%= @pennies[:error] %>
               <% else %>
-               <% @pennies.each do |penny| %>
+               <% @pennies[:upcoming_pennies].each do |penny| %>
                   <tr>
                     <td><%= penny.date %></td>
                     <td><%= penny.location %></td>
@@ -85,17 +87,19 @@
               </tr>
             </thead>
             <tbody>
-              <% if @pennies.length == 0 %>
-              <tr colspan="2">You have no pennies</tr>
+              <% if @pennies[:success?] == false %>
+                 <tr colspan="2">You have no pennies</tr>
+              <% elsif @pennies[:past_pennies] == nil %>
+                <%= @pennies[:error] %>
               <% else %>
-               <% @pennies.each do |penny| %>
+                <% @pennies[:past_pennies].each do |penny| %>
                   <tr>
                     <td><%= penny.date %></td>
                     <td><%= penny.location %></td>
                     <td><%= penny.name %></td>
                     <td><%= penny.org_id %></td>
                   </tr>
-               <% end %>
+                <% end %>
               <% end %>
             </tbody>
           </table>

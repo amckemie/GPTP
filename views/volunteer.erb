@@ -7,12 +7,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
- <!--  <style>
-      *{
-          -webkit-box-sizing: border-box;
-          border: 1px solid red;
-      }
-  </style> -->
 </head>
 <body>
 <!-- Top Bar -->
@@ -39,7 +33,7 @@
           <a href="/organization" class="button">Organizations</a>
         </li>
         <li class="user buttons">
-          <a href="#" class="button">Pennies</a>
+          <a href="/penny_list" class="button">Pennies</a>
         </li>
       </ul>
     </section>
@@ -49,6 +43,7 @@
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
       <div class="small-6 medium-6 large-6 columns pennies past">
+      <!-- Past Pennies Display -->
         <table class="penny">
           <thead>
             <tr>
@@ -80,6 +75,7 @@
         </table>
       </div>
       <div class="small-6 medium-6 large-6 columns pennies upcoming">
+      <!-- Upcoming Pennies Display -->
         <table class="penny">
           <thead>
             <tr>
@@ -96,7 +92,7 @@
             <% if @pennies[:success?] == false %>
               <tr colspan="2"><%= @pennies[:error] %></tr>
             <% elsif @pennies[:upcoming_pennies] == nil %>
-              <%= @pennies[:error%>
+              <%= @pennies[:error]%>
             <% else %>
               <% @pennies[:upcoming_pennies].each do |penny| %>
                 <tr>
