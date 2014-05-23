@@ -6635,8 +6635,11 @@ th.hide-for-touch {
 .top-bar {
   height: 3.3em;
   margin-bottom: 5rem; }
+  /* line 4, ../sass/mystyles/_topbar.scss */
+  .top-bar ul h3 {
+    color: #95a5a6; }
 
-/* line 6, ../sass/mystyles/_topbar.scss */
+/* line 9, ../sass/mystyles/_topbar.scss */
 .top-bar ul > li.has-dropdown a:after {
   content: "";
   display: none;
@@ -6651,26 +6654,26 @@ th.hide-for-touch {
   top: 0;
   right: 0; }
 
-/* line 20, ../sass/mystyles/_topbar.scss */
+/* line 23, ../sass/mystyles/_topbar.scss */
 .title-area {
   padding: 0.5rem 0 0 0; }
 
-/* line 23, ../sass/mystyles/_topbar.scss */
+/* line 26, ../sass/mystyles/_topbar.scss */
 .logo {
   width: 3rem;
   height: 3rem; }
 
-/* line 27, ../sass/mystyles/_topbar.scss */
+/* line 30, ../sass/mystyles/_topbar.scss */
 .slogan {
   color: white;
   padding: 1rem 1rem 0 0;
   font-size: 1.5rem;
   font-family: Satellite; }
 
-/* line 33, ../sass/mystyles/_topbar.scss */
+/* line 36, ../sass/mystyles/_topbar.scss */
 .user {
   padding: .55rem 1rem 0 0; }
-  /* line 35, ../sass/mystyles/_topbar.scss */
+  /* line 38, ../sass/mystyles/_topbar.scss */
   .user.buttons {
     padding: .65rem; }
 

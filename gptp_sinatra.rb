@@ -13,34 +13,22 @@ get '/' do
 end
 
 get '/volunteer' do
-  if session[:user] == nil
-    erb :error
-  else
-    # t = Time.now
-    # today = "#{t.year} #{t.month} #{t.day}"
-    # GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-    # t = Time.now
-    # today = "#{t.year} #{t.month} #{t.day}"
-    # GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-    # @pennies = GPTP.db.list_pennies
+  # if session[:user] == nil
+  #   erb :error
+  # else
     email = session[:user].email
-    @pennies = GPTP::GetPennies.new.run(volunteer: email)
-    erb :volunteer
-  end
+    @pennies = GPTP::GetPennies.new.run(vol: email)
+    erb :volunteer, :layout => :users
+  # end
 end
 
 get '/organization' do
   if session[:user] == nil
     erb :error
   else
-    t = Time.now
-    today = "#{t.year} #{t.month} #{t.day}"
-    GPTP.db.create_penny(name: "past", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-    t = Time.now
-    today = "#{t.year} #{t.month} #{t.day}"
-    GPTP.db.create_penny(name: "upcoming", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-    @pennies = GPTP.db.list_pennies
-    erb :organization
+    email = session[:user].email
+    @pennies = GPTP::GetPennies.new.run(org: email)
+    erb :organization, :layout => :users
   end
 end
 

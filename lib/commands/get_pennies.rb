@@ -18,13 +18,14 @@ class GPTP::GetPennies
       upcoming_pennies << penny if penny.date >= today
     end
     if past_pennies.length == 0
-      past_pennies.sort_by! {|x,y| x.date<=>y}
+      upcoming_pennies.sort_by! {|x,y| x.date<=>y}
       return {success?: true, error: "You have no past pennies.", upcoming_pennies: upcoming_pennies}
     elsif upcoming_pennies.length == 0
-      upcoming_pennies.sort_by! {|x,y| x.date<=>y}
+      past_pennies.sort_by! {|x,y| x.date<=>y}
       return {success?: true, error: "You have no upcoming pennies.", past_pennies: past_pennies}
     else
-      pennies.sort_by! {|x,y| x.date<=>y}
+      past_pennies.sort_by! {|x,y| x.date<=>y}
+      upcoming_pennies.sort_by! {|x,y| x.date<=>y}
       return {success?: true, past_pennies: past_pennies, upcoming_pennies: upcoming_pennies}
     end
   end
