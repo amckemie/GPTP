@@ -21,6 +21,21 @@ get '/organization' do
   erb :organization
 end
 
-get '/penny_profile' do
+post '/penny_profile' do
+  @name = params[:name]
+  @description = params[:description]
+  @when = params[:date]
+  @where = params[:location]
+  @how_long = params[:time_requirement]
+  @organization =params[:organization]
   erb :penny_profile
+end
+
+get '/penny_list' do
+  t = Time.now
+  today = "#{t.year} #{t.month} #{t.day}"
+  penny = GPTP.db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
+  @array = []
+  @array = GPTP.db.list_pennies
+  erb :penny_list
 end
