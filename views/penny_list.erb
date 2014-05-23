@@ -1,7 +1,7 @@
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
-      <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
+      <h1><a href="/"><img class="logo" src="images/gptplogo.png"></a></h1>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -42,7 +42,8 @@
     <% @array.each do |elem| %>
       <form action ='/penny_profile' method = 'post'>
       <tr>
-        <td><button type = "submit">Take ME</button></td>
+        <!-- <td><button type = "submit">Take Me</button></td> -->
+        <td style = "padding-left: 50px;"><input type="image" value="Take Me" src= "images/coin.png" class="logo left" /></td>
         <td ><%= elem.name %></td>
         <input type = "hidden" name = "name" id ="name" value = <%= elem.name %>>
         <td ><%= elem.description %></td>
