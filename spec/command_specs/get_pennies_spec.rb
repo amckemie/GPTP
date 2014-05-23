@@ -43,7 +43,15 @@ describe GPTP::GetPennies do
       expect(vol_test[:upcoming_pennies].length).to eq(1)
     end
 
-    xit 'should return an error with past pennies if the user does not have any upcoming pennies' do
+    it 'should return an error with past pennies if the user does not have any upcoming pennies' do
+      org1
+      user1
+      penny2
+      takepenny2
+      expect(org_test[:error]).to eq("You have no upcoming pennies.")
+      expect(org_test[:past_pennies].length).to eq(1)
+      expect(vol_test[:error]).to eq("You have no upcoming pennies.")
+      expect(vol_test[:past_pennies].length).to eq(1)
     end
 
     xit 'should return true with array of the users past and present pennies' do
