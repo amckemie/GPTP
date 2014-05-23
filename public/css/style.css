@@ -6677,6 +6677,10 @@ th.hide-for-touch {
   .user.buttons {
     padding: .65rem; }
 
+/* line 42, ../sass/mystyles/_topbar.scss */
+.three-lines {
+  padding: .5em 0 0 1.4em; }
+
 /* line 1, ../sass/mystyles/_footer.scss */
 .footer {
   text-align: center;
@@ -6723,7 +6727,7 @@ body {
 /* line 22, ../sass/mystyles/_body.scss */
 .container {
   padding-top: 5em;
-  padding-bottom: 2em; }
+  padding-bottom: 2.5em; }
 
 /* line 26, ../sass/mystyles/_body.scss */
 .vol-div {
@@ -6828,7 +6832,7 @@ body {
 /* line 22, ../sass/mystyles/_body.scss */
 .container {
   padding-top: 5em;
-  padding-bottom: 2em; }
+  padding-bottom: 2.5em; }
 
 /* line 26, ../sass/mystyles/_body.scss */
 .vol-div {
