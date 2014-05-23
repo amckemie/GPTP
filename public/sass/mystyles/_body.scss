@@ -1,8 +1,5 @@
-.pennies {
-  margin: 4rem 0;
-  h3 {
-    margin-left: 4rem;
-  }
+*{
+  font-family: Satelllite;
 }
 body {
   background-image: url("../images/background.png");
@@ -15,7 +12,22 @@ body {
   padding-top: 5em;
   padding-bottom: 2em;
 }
-*{
-  font-family: Satelllite;
+.vol-div{
+  margin-left: -3em;
+  width: 27em;
 }
-
+.coin-img{
+  position: fixed;
+  top: 46%;
+  left: 46%;
+}
+.org-div{
+  width: 30em;
+  margin-right: -6em;
+}
+.pennies {
+  margin: 4rem 0;
+  h3 {
+    margin-left: 4rem;
+  }
+}
