@@ -12,26 +12,55 @@ get '/' do
   erb :home
 end
 
-post '/volunteer' do
-  @result = GPTP::SignIn(params[:email], params[:password])
-  if @result[:success?]
-    session[:user] = @result[:volunteer]
-    erb :volunteer
-  else
-    session[:error] = @result[:error]
-    redirect '/'
-  end
+get '/volunteer' do
   erb :volunteer
 end
 
-post '/organization' do
-  @result = GPTP::SignIn(params[:email], params[:password])
+get 'organization' do
+  erb :organization
+end
+
+post '/volunteer-sign-in' do
+  @result = GPTP::SignIn.new.run(params[:email], params[:password])
   if @result[:success?]
     session[:user] = @result[:volunteer]
-    erb :volunteer
+    redirect '/volunteer'
   else
     session[:error] = @result[:error]
     redirect '/'
   end
-  erb :organization
+end
+
+post '/volunteer-sign-up' do
+  @result = GPTP::VolunteerSignUp.new.run(params)
+  if @result[:success?]
+    session[:user] = @result[:volunteer]
+    redirect 'volunteer'
+
+  else
+    session[:error] = @result[:error]
+    redirect '/'
+  end
+end
+
+post '/organization-sign-in' do
+  @result = GPTP::SignIn.new.run(params[:email], params[:password])
+  if @result[:success?]
+    session[:user] = @result[:volunteer]
+    redirect '/organization'
+  else
+    session[:error] = @result[:error]
+    redirect '/'
+  end
+end
+
+post '/organization-sign-up' do
+  @result = GPTP::OrganizationSignUp.new.run(params)
+  if @result[:success?]
+    session[:user] = @result[:volunteer]
+    redirect '/organization'
+  else
+    session[:error] = @result[:error]
+    redirect '/'
+  end
 end
