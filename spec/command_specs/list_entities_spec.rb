@@ -27,19 +27,19 @@ describe 'GPTP::ListEntities' do
     result = GPTP::ListEntities.new.run(type: "organization")
     expect(result[:success?]).to eq(true)
     expect(result[:result].size).to eq(3)
-    expect(result[:result][0].name).to eq("Doing Good")
+    expect(result[:result][0]).to be_a(GPTP::Organization)
     volunteer1
     volunteer2
     result2 = GPTP::ListEntities.new.run(type: "volunteer")
     expect(result2[:success?]).to eq(true)
     expect(result2[:result].size).to eq(2)
-    expect(result2[:result][0].name).to eq("Susie")
+    expect(result2[:result][0]).to be_a(GPTP::Volunteer)
     penny1
     penny2
     result3 = GPTP::ListEntities.new.run(type: "penny")
     expect(result3[:success?]).to eq(true)
     expect(result3[:result].size).to eq(2)
-    expect(result3[:result][1].name).to eq("test2")
+    expect(result3[:result][1]).to be_a(GPTP::Penny)
   end
 
   it "returns a success message if there are 1 or more of the inputted type of entity" do

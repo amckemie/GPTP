@@ -52,6 +52,10 @@
             <div class="small-6 medium-6 large-6 columns">
               <a href="#" class="button" id="vol_up">Sign Up</a>
             </div>
+            <% if session[:error] %>
+              <p><%= session[:error] %></p>
+              <%= session[:error] = nil %>
+            <% end %>
           </div>
         </div>
           <!-- Volunteer Sign In -->
@@ -59,7 +63,6 @@
             <form method="post" action="/volunteer-sign-in">
               <fieldset>
                 <legend> Volunteer Sign In</legend>
-
                 <div class="row">
                   <div class="large-8 columns">
                     <label>Email</label>
@@ -74,10 +77,6 @@
                 </div>
                 <input class="button" type="submit" value="Sign In">
               </fieldset>
-              <% if session[:error] %>
-              <p><%= session[:error] %></p>
-              <%= session[:error] = nil %>
-            <% end %>
             </form>
           </div>
           <!-- Volunteer Sign Up Form -->
@@ -111,10 +110,6 @@
                 </div>
                 <input class="button" type="submit" value="Sign Up">
               </fieldset>
-              <% if session[:error] %>
-                <p><%= session[:error] %></p>
-                <%= session[:error] = nil %>
-              <% end %>
             </form>
           </div>
           <!-- About us -->
@@ -125,7 +120,6 @@
             </div>
           </div>
       </div>
-
       <!-- Coin div -->
       <div class="small-2 medium-2 large-2 columns coin-div">
         <div class="row">
@@ -154,6 +148,10 @@
             </div>
             <div class="small-6 medium-6 large-6 columns">
               <a href="#" class="button" id="org_up">Sign Up</a>
+             <% if session[:org_error] %>
+              <p><%= session[:org_error] %></p>
+              <%= session[:org_error] = nil %>
+             <% end %>
             </div>
           </div>
         </div>
@@ -176,14 +174,10 @@
                 </div>
                 <input class="button" type="submit" value="Sign In">
               </fieldset>
-            <% if session[:org_error] %>
-              <p><%= session[:org_error] %></p>
-              <%= session[:org_error] = nil %>
-            <% end %>
             </form>
           </div>
           <!-- Organization Sign Up Form -->
-          <div class="row hidden form-padding" id="org_up_form">
+          <div class="row hidden" id="org_up_form"> Checked
             <form method="post" action="/organization-sign-up">
               <fieldset>
                 <legend>Organization Sign Up</legend>
@@ -223,10 +217,6 @@
                 </div>
                 <input class="button" type="submit" value="Sign Up">
               </fieldset>
-              <% if session[:error] %>
-                <p><%= session[:error] %></p>
-                <%= session[:error] = nil %>
-              <% end %>
             </form>
           </div>
           <!-- Contact Us -->
@@ -261,7 +251,7 @@
                 <div class="row">
                   <div class="large-8 columns">
                     <label>Message
-                      <textarea placeholder="small-12.columns"></textarea>
+                      <textarea placeholder="Enter Your Message"></textarea>
                     </label>
                   </div>
                 </div>
@@ -271,14 +261,6 @@
           </div>
       </div>
     </div>
- </div>
+  </div>
 </div>
 
-<!-- footer -->
-<div class="small-12 medium-12 large-12 columns footer">
-  <ul>
-    <li><i class="fa fa-facebook-square fa-lg"></i></li>
-    <li><a href="https://github.com/amckemie/GPTP"><i class="fa fa-github-square fa-lg"></i></a></li>
-    <li><i class="fa fa-twitter-square fa-lg"></i></li>
-  </ul>
-</div>

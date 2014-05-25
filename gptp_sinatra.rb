@@ -13,13 +13,13 @@ get '/' do
 end
 
 get '/volunteer' do
-  # if session[:user] == nil
-  #   erb :error
-  # else
+  if session[:user] == nil
+    erb :error
+  else
     email = session[:user].email
     @pennies = GPTP::GetPennies.new.run(vol: email)
     erb :volunteer, :layout => :users
-  # end
+  end
 end
 
 get '/organization' do
@@ -33,10 +33,13 @@ get '/organization' do
 end
 
 get '/all-volunteers' do
-  # @volunteers = GPTP::
+  @result = GPTP::ListEntities.new.run(type: "volunteer")
+  erb :volunteer_list, :layout => :list
 end
 
 get '/all-organizations' do
+  @result = GPTP::ListEntities.new.run(type: "organization")
+  erb :organization_list, :layout => :list
 end
 
 post '/volunteer-sign-in' do
@@ -54,7 +57,7 @@ post '/volunteer-sign-up' do
   @result = GPTP::VolunteerSignUp.new.run(params)
   if @result[:success?]
     session[:user] = @result[:user]
-    redirect 'volunteer'
+    redirect '/volunteer'
 
   else
     session[:error] = @result[:error]
@@ -79,7 +82,7 @@ post '/organization-sign-up' do
     session[:user] = @result[:user]
     redirect '/organization'
   else
-    session[:error] = @result[:error]
+    session[:org_error] = @result[:error]
     redirect '/'
   end
 end

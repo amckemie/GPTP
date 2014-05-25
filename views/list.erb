@@ -21,7 +21,7 @@
       <!-- Left Nav Section -->
       <ul class="left">
         <li>
-          <h3 class="user"><%= session[:user].name %></h3>
+          <%= yield_content :nav_name %>
         </li>
       </ul>
 
@@ -40,37 +40,16 @@
   <!-- body -->
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <div class="small-6 medium-6 large-6 columns pennies past">
-      <!-- Past Pennies Display -->
-        <table class="penny">
-          <thead>
-            <tr>
-              <th class="penny-header" colspan="4">Past Pennies</th>
-            </tr>
-            <tr>
-              <%= yield_content :table_header %>
-            </tr>
-          </thead>
-          <tbody>
-            <%= yield_content :table_content %>
-          </tbody>
-        </table>
-      </div>
-      <div class="small-6 medium-6 large-6 columns pennies upcoming">
-      <!-- Upcoming Pennies Display -->
-        <table class="penny">
-          <thead>
-            <tr>
-              <th class="penny-header" colspan="4">Upcoming Pennies</th>
-            </tr>
-            <%= yield_content :table_header_upcoming %>
-          </thead>
-          <tbody>
-            <%= yield_content :table_content_upcoming %>
-          </tbody>
-        </table>
-      </div>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <%= yield_content :table_header %>
+          </tr>
+        </thead>
+        <tbody>
+          <%= yield_content :table_content %>
+        </tbody>
+      </table>
     </div>
   </div>
   <!-- footer -->
