@@ -11,7 +11,9 @@
 
 <% content_for :table_content do %>
   <% if @pennies[:success?] == false %>
-    <tr colspan="2">You have no pennies</tr>
+    <tr colspan="2">
+      <td>You have no pennies</td>
+    </tr>
   <% elsif @pennies[:past_pennies] == nil %>
     <%= @pennies[:error] %>
   <% else %>

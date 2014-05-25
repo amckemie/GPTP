@@ -6,15 +6,6 @@
 .hidden {
   display: none;
 }
-.pennies {
-  margin: -1rem;
-  &.past {
-    margin-left: -5rem;
-  }
-  &.upcoming {
-    margin-right: -5rem;
-  }
-}
 body {
   background-image: url("../images/background.png");
   background-repeat: repeat-y;

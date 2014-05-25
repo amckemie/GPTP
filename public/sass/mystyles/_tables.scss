@@ -9,3 +9,13 @@ table.penny {
   margin-bottom: 3rem;
   width: 30rem;
 }
+.pennies {
+  margin-top: 5rem;
+  // margin: -1rem;
+  &.past {
+    margin-left: -5rem;
+  }
+  &.upcoming {
+    margin-right: -3rem;
+  }
+}

@@ -32,6 +32,13 @@ get '/organization' do
   end
 end
 
+get '/all-volunteers' do
+  # @volunteers = GPTP::
+end
+
+get '/all-organizations' do
+end
+
 post '/volunteer-sign-in' do
   @result = GPTP::SignIn.new.run(params[:email], params[:password], true)
   if @result[:success?]
