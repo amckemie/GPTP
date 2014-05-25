@@ -34,6 +34,7 @@
 
       <!-- Volunteer div -->
       <div class="small-5 medium-5 large-5 columns vol-div">
+        <div id="vol_div">
           <div class="row">
             <div class="small-12 medium-12 large-12 columns">
               <h2 class="h2">Give a penny...</h2>
@@ -46,14 +47,15 @@
           </div>
           <div class="row heading-padding">
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign In">
+              <a href="#" class="button" id="vol_in">Sign In</a>
             </div>
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign Up">
+              <a href="#" class="button" id="vol_up">Sign Up</a>
             </div>
           </div>
+        </div>
           <!-- Volunteer Sign In -->
-          <div class="row hidden">
+          <div class="row hidden" id="vol_in_form">
             <form method="post" action="/volunteer-sign-in">
               <fieldset>
                 <legend> Volunteer Sign In</legend>
@@ -79,7 +81,7 @@
             </form>
           </div>
           <!-- Volunteer Sign Up Form -->
-          <div class="row hidden">
+          <div class="row hidden" id="vol_up_form">
             <form method="post" action="/volunteer-sign-up">
               <fieldset>
                 <legend>Volunteer Sign Up</legend>
@@ -135,6 +137,7 @@
 
       <!-- Organizations div -->
       <div class="small-5 medium-5 large-5 columns org-div">
+        <div id="org_div">
           <div class="row">
             <div class="small-12 medium-12 large-12 columns">
               <h2 class="h2">Take a penny...</h2>
@@ -147,14 +150,15 @@
           </div>
           <div class="row heading-padding">
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign In">
+              <a href="#" class="button" id="org_in">Sign In</a>
             </div>
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign Up">
+              <a href="#" class="button" id="org_up">Sign Up</a>
             </div>
-            </div>
+          </div>
+        </div>
           <!-- Organization Sign In Form -->
-          <div class="row hidden">
+          <div class="row hidden" id="org_in_form">
             <form method="post" action="/organization-sign-in">
               <fieldset>
                 <legend>Organization Sign In</legend>
@@ -179,7 +183,7 @@
             </form>
           </div>
           <!-- Organization Sign Up Form -->
-          <div class="row hidden form-padding">
+          <div class="row hidden form-padding" id="org_up_form">
             <form method="post" action="/organization-sign-up">
               <fieldset>
                 <legend>Organization Sign Up</legend>

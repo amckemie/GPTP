@@ -6634,7 +6634,7 @@ th.hide-for-touch {
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
   height: 3.3em;
-  margin-bottom: 5rem; }
+  margin-bottom: 1rem; }
   /* line 4, ../sass/mystyles/_topbar.scss */
   .top-bar ul h3 {
     color: #95a5a6; }
@@ -6772,6 +6772,22 @@ h3 {
 .fa:hover {
   color: #F7CA10; }
 
+/* line 61, ../sass/mystyles/_body.scss */
+#vol_in_form {
+  margin: 2rem 0 14rem 0; }
+
+/* line 65, ../sass/mystyles/_body.scss */
+#vol_up_form {
+  margin: 0 0 8rem 0; }
+
+/* line 69, ../sass/mystyles/_body.scss */
+#org_in_form {
+  margin: 2rem 0 10rem 0; }
+
+/* line 73, ../sass/mystyles/_body.scss */
+#org_up_form {
+  margin: -5rem 0 0 0; }
+
 /* line 2, ../sass/mystyles/_buttons.scss */
 .penny_profile {
   margin: 0 auto;
@@ -6880,6 +6896,22 @@ h3 {
 /* line 57, ../sass/mystyles/_body.scss */
 .fa:hover {
   color: #F7CA10; }
+
+/* line 61, ../sass/mystyles/_body.scss */
+#vol_in_form {
+  margin: 2rem 0 14rem 0; }
+
+/* line 65, ../sass/mystyles/_body.scss */
+#vol_up_form {
+  margin: 0 0 8rem 0; }
+
+/* line 69, ../sass/mystyles/_body.scss */
+#org_in_form {
+  margin: 2rem 0 10rem 0; }
+
+/* line 73, ../sass/mystyles/_body.scss */
+#org_up_form {
+  margin: -5rem 0 0 0; }
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
