@@ -1,5 +1,14 @@
 class GPTP::OrganizationSignUp
   def run(data)
+    data.each do |key, value|
+      if value == ""
+        return {
+        success?: false,
+        error: "You did not enter the correct information."
+        }
+      end
+    end
+
     organization = GPTP.db.get_organization(data[:email])
     if organization.name
       return {
