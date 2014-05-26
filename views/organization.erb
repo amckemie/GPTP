@@ -38,6 +38,7 @@
     <th width="200">Location</th>
     <th width="200">Name</th>
     <th width="250">Time Commitment</th>
+    <th width="150">Status</th>
   </tr>
 <% end %>
 
@@ -53,6 +54,11 @@
         <td><%= penny.location %></td>
         <td><%= penny.name %></td>
         <td><%= penny.time_requirement %></td>
+        <% if penny.vol_id %>
+          <td>Claimed</td>
+        <% else %>
+          <td>Unclaimed</td>
+        <% end %>
       </tr>
     <% end %>
   <% end %>
