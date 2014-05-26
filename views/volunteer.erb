@@ -36,9 +36,10 @@
 <% content_for :table_header_upcoming do %>
   <tr>
     <th width="150">Date</th>
+    <th width="150">Time</th>
     <th width="200">Location</th>
     <th width="150">Name</th>
-    <th width="150">Organization</th>
+    <th width="150">Organization ID</th>
   </tr>
 <% end %>
 
@@ -51,6 +52,7 @@
     <% @pennies[:upcoming_pennies].each do |penny| %>
       <tr>
         <td><%= penny.date %></td>
+        <td><%= penny.time %></td>
         <td><%= penny.location %></td>
         <td><%= penny.name %></td>
         <td><%= penny.org_id %></td>

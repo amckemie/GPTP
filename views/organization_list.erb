@@ -5,12 +5,19 @@
 
 <!-- Right Section of buttons -->
 <% content_for :button do %>
-  <a href="/all-volunteers" class="button">Volunteers</a>
-<% end %>
-
-<!-- Right Section: 2nd Button -->
-<% content_for :button2 do %>
-  <a href="/all-pennies" class="button">Pennies</a>
+  <li class="user buttons">
+    <% if session[:user].class == GPTP::Volunteer%>
+      <a href="/volunteer" class="button">Your Profile</a>
+    <% else %>
+      <a href="/organization" class="button">Your Profile</a>
+    <% end %>
+  </li>
+  <li class="user buttons">
+    <a href="/all-volunteers" class="button">Volunteers</a>
+  </li>
+  <li class="user buttons">
+    <a href="/all-pennies" class="button">Pennies</a>
+  </li>
 <% end %>
 
 <!-- Organization Table Header -->
