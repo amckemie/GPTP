@@ -31,7 +31,7 @@
           <%= yield_content :button %>
         </li>
         <li class="user buttons">
-          <a href="/penny_list" class="button">Pennies</a>
+          <%= yield_content :button2 %>
         </li>
       </ul>
     </section>
@@ -40,7 +40,7 @@
   <!-- body -->
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <table>
+      <table class="list-all">
         <thead>
           <tr>
             <%= yield_content :table_header %>

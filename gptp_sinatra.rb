@@ -13,7 +13,7 @@ get '/' do
 end
 
 get '/volunteer' do
-  if session[:user] == nil
+  if session[:user] == nil || session[:user].class != GPTP::Volunteer
     erb :error
   else
     email = session[:user].email
@@ -23,7 +23,7 @@ get '/volunteer' do
 end
 
 get '/organization' do
-  if session[:user] == nil
+  if session[:user] == nil || session[:user].class != GPTP::Organization
     erb :error
   else
     email = session[:user].email
@@ -87,22 +87,37 @@ post '/organization-sign-up' do
   end
 end
 
-post '/penny_profile' do
-  @name = params[:name]
-  @description = params[:description]
-  @when = params[:date]
-  @where = params[:location]
-  @how_long = params[:time_requirement]
-  @organization = params[:organization]
-  @id = params[:id]
-  erb :penny_profile
+post '/take-penny' do
+  id = params[:id]
+  email = session[:user].email
+  GPTP::VolunteerTakesPenny.new.run(penny_id: id, volunteer_email: email)
+  redirect '/volunteer'
 end
 
-get '/penny_list' do
-  t = Time.now
-  today = "#{t.year} #{t.month} #{t.day}"
-  penny = GPTP.db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-  @array = []
-  @array = GPTP.db.list_pennies
-  erb :penny_list
+get '/all-pennies' do
+  @result = GPTP::ListEntities.new.run(type: "pennies")
+  erb :penny_list, :layout => :list
 end
+
+get '/post-penny' do
+  if session[:user] == nil
+    erb :error
+  else
+    @org_id = session[:user].id
+    erb :post_penny
+  end
+end
+
+post '/add-penny' do
+  @result = GPTP::OrganizationGivesPenny.new.run(params)
+  if @result[:success?]
+    session[:user] = @result[:user]
+    redirect '/organization'
+  else
+    session[:org_error] = @result[:error]
+    redirect '/post-penny'
+  end
+end
+
+
+

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GPTP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+  <!-- Top Bar -->
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/"><img class="logo" src="images/gptplogo.png"></a></h1>
+        </li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <span>
+            <h3 class="user">Post Penny</h3>
+          </span>
+        </ul>
+
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="user buttons">
+            <a href="/organization" class="button">Your Profile</a>
+          </li>
+          <li class="user buttons">
+            <a href="/all-volunteers" class="button">Volunteers</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    <!-- Post Penny Form -->
+    <div class="row" >
+      <form method="post" action="/add-penny" class="post-penny">
+        <fieldset>
+          <legend>Add Penny</legend>
+          <div class="row">
+            <div class="small-8 medium-8 large-8 columns">
+              <label>Name</label>
+              <input type="text" name="name" placeholder="Name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-8 medium-8 large-8 columns">
+              <label>Description</label>
+              <input type="text" name="description" placeholder="Description">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-8 medium-8 large-8 columns">
+              <label>Location</label>
+              <input type="text" name="location" placeholder="Location">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-4 medium-4 large-4 columns">
+              <label>Time Requirement</label>
+              <input type="text" name="time_req" placeholder="Time Requirement">
+            </div>
+            <div class="small-4 medium-4 large-4 columns left">
+              <label>Number of Volunteers Needed</label>
+              <input type="text" name="vols" placeholder="Number Volunteers">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-4 medium-4 large-4 columns">
+              <label>Date</label>
+              <input type="text" name="date" placeholder="Date">
+            </div>
+            <div class="small-4 medium-4 large-4 columns left">
+              <label>Time</label>
+              <input type="text" name="time" placeholder="Time">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-4 medium-4 large-4 columns">
+              <label>ID: <%= @org_id %></label>
+              <input type = "hidden" name = "org_id" value = <%= @org_id %>>
+            </div>
+          </div>
+          <input class="button" type="submit" value="Post">
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>

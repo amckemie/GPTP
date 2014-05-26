@@ -20,19 +20,14 @@
     <section class="top-bar-section">
       <!-- Left Nav Section -->
       <ul class="left">
-        <li>
+        <span>
           <h3 class="user"><%= session[:user].name %></h3>
-        </li>
+        </span>
       </ul>
 
       <!-- Right Nav Section -->
       <ul class="right">
-        <li class="user buttons">
-          <%= yield_content :button %>
-        </li>
-        <li class="user buttons">
-          <a href="/penny_list" class="button">Pennies</a>
-        </li>
+        <%= yield_content :button %>
       </ul>
     </section>
   </nav>

@@ -3,7 +3,7 @@ class GPTP::OrganizationGivesPenny
   def run(input)
     # Takes input of a hash including hash to create penny and the number of times to create the penny
     # Returns array with given number of the same pennies
-    if input[:penny].length < 8
+    if input[:penny].length < 7
         return {
           :success? => false,
           message: "Please make sure you have provided all the necessary information to give a penny."

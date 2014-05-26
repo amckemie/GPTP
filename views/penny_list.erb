@@ -1,63 +1,63 @@
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="/"><img class="logo" src="images/gptplogo.png"></a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+<!-- Left Header Title -->
+<% content_for :nav_name do %>
+  <h3 class="user">Pennies</h3>
+<% end %>
 
-<section class="top-bar-section">
-  <!-- Left Nav Section -->
-  <ul class="left">
-    <li class="has-dropdown">
-      <a href="#"><div class="three-lines">&#9776;</div></a>
-      <ul class="dropdown menu-button">
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </li>
-  </ul>
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li><h2 class="slogan">"Bringing good companies and good people together."</h2></li>
-    </ul>
-  </section>
-</nav>
+<!-- Right Section of buttons -->
+<% content_for :button do %>
+  <li class="user buttons">
+    <a href="/all-organizations" class="button">Organizations</a>
+  </li>
+  <li class="user buttons">
+    <a href="/all-volunteers" class="button">Volunteers</a>
+  </li>
+<% end %>
 
+<!-- Right Section: 2nd Button -->
+<% content_for :button2 do %>
+  <a href="/all-organizations" class="button">Organizations</a>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th width="150">Take the Penny</th>
-      <th width="200">Name</th>
-      <th>Description</th>
-      <th width="150">Organization</th>
-      <th width="150">Location</th>
-      <th width="150">Date</th>
-      <th width="150">ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @array.each do |elem| %>
-      <form action ='/penny_profile' method = 'post'>
-      <tr>
-        <!-- <td><button type = "submit">Take Me</button></td> -->
-        <td style = "padding-left: 50px;"><input type="image" value="Take Me" src= "images/coin.png" class="logo left" /></td>
-        <td ><%= elem.name %></td>
-        <input type = "hidden" name = "name" id ="name" value = <%= elem.name %>>
-        <td ><%= elem.description %></td>
-        <input type = "hidden" name = "description" value = <%= elem.description %>>
-        <td><%= elem.org_id %></td>
-        <input type = "hidden" name = "organization" value = <%= elem.org_id %>>
-        <td><%= elem.location %></td>
-        <input type = "hidden" name = "location" value = <%= elem.location %>>
-        <td><%= elem.date %></td>
-        <input type = "hidden" name = "date" value = <%= elem.date %>>
-        <td><%= elem.id %></td>
-        <input type = "hidden" name = "id" value = <%= elem.id %>>
-      </tr>
-    </form>
+<!-- Penny Table Header -->
+<% content_for :table_header do %>
+  <th width="150">Take the Penny</th>
+  <th width="200">Name</th>
+  <th>Description</th>
+  <th width="100">Organization</th>
+  <th width="150">Location</th>
+  <th width="150">Date</th>
+  <th width="200">Time Commitment</th>
+  <th width="150">ID</th>
+<% end %>
+
+<!-- Penny Table rows (All Penny info)-->
+<% content_for :table_content do %>
+  <% if @result[:success?] %>
+    <% @result[:result].each do |elem| %>
+      <% if elem.vol_id == nil %>
+        <form action ='/take-penny' method = 'post'>
+          <tr>
+            <!-- <td><button type = "submit">Take Me</button></td> -->
+            <td style = "padding-left: 50px;"><a href="/take-penny"><input type="image" value="Take Me" src= "images/coin.png" class="logo left" /></a></td>
+            <td ><%= elem.name %></td>
+            <input type = "hidden" name = "name" id ="name" value = <%= elem.name %>>
+            <td ><%= elem.description %></td>
+            <input type = "hidden" name = "description" value = <%= elem.description %>>
+            <td><%= elem.org_id %></td>
+            <input type = "hidden" name = "org_id" value = <%= elem.org_id %>>
+            <td><%= elem.location %></td>
+            <input type = "hidden" name = "location" value = <%= elem.location %>>
+            <td><%= elem.date %></td>
+            <input type = "hidden" name = "date" value = <%= elem.date %>>
+            <td><%= elem.time_requirement %></td>
+            <input type="hidden" name = "time" value = <%= elem.time_requirement %>>
+            <td><%= elem.id %></td>
+            <input type = "hidden" name = "id" value = <%= elem.id %>>
+          </tr>
+        </form>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+<% end %>
+
+
