@@ -9,13 +9,13 @@ class GPTP::GetPennies
       pennies = GPTP.db.org_pennies(org.id)
     end
     return {success?: false, error: "You have no pennies."} if pennies.length == 0
-    t = Time.now
-    today = "#{t.year} #{t.month} #{t.day}"
+    today = Date.today
     past_pennies = []
     upcoming_pennies = []
     pennies.each do |penny|
-      past_pennies << penny if penny.date < today
-      upcoming_pennies << penny if penny.date >= today
+      date = Date.parse(penny.date)
+      past_pennies << penny if date < today
+      upcoming_pennies << penny if date >= today
     end
     if past_pennies.length == 0
       upcoming_pennies.sort_by! {|x,y| x.date<=>y}

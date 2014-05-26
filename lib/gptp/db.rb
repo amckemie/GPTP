@@ -13,7 +13,7 @@ class GPTP::DB
         org_id integer,
         time_requirement text,
         time text,
-        date text,
+        date date,
         location text,
         status integer,
         vol_id integer,

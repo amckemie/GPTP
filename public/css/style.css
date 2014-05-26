@@ -6821,8 +6821,9 @@ textarea {
 
 /* line 14, ../sass/mystyles/_forms.scss */
 form.post-penny {
-  width: 75%;
-  margin-bottom: 5rem; }
+  width: 70%;
+  margin-bottom: 5rem;
+  height: 30rem; }
 
 /* line 2, ../sass/mystyles/_body.scss */
 * {

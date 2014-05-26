@@ -1,4 +1,5 @@
 require 'pry'
+require 'time'
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/content_for"
@@ -109,12 +110,14 @@ get '/post-penny' do
 end
 
 post '/add-penny' do
-  @result = GPTP::OrganizationGivesPenny.new.run(params)
+  number = params[:number].to_i
+  penny_hash = {name: params[:name], description: params[:description], org_id: params[:org_id].to_i, time_requirement: params[:time_req], time: params[:time], location: params[:location], date: params[:date], status: 0}
+  @result = GPTP::OrganizationGivesPenny.new.run({penny: penny_hash, number: number})
   if @result[:success?]
-    session[:user] = @result[:user]
+    session[:message] = @result[:message]
     redirect '/organization'
   else
-    session[:org_error] = @result[:error]
+    session[:error] = @result[:message]
     redirect '/post-penny'
   end
 end
