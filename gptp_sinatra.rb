@@ -90,9 +90,13 @@ end
 
 post '/take-penny' do
   id = params[:id]
-  email = session[:user].email
-  GPTP::VolunteerTakesPenny.new.run(penny_id: id, volunteer_email: email)
-  redirect '/volunteer'
+  if session[:user].class == GPTP::Organization
+    erb :error
+  else
+    email = session[:user].email
+    GPTP::VolunteerTakesPenny.new.run(penny_id: id, volunteer_email: email)
+    redirect '/volunteer'
+  end
 end
 
 get '/all-pennies' do
