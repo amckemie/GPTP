@@ -113,15 +113,6 @@ get '/post-penny' do
   end
 end
 
-<<<<<<< HEAD
-get '/penny_list' do
-  t = Time.now
-  today = "#{t.month}/#{t.day}/#{t.year}"
-  penny = GPTP.db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
-  @array = []
-  @array = GPTP.db.list_pennies
-  erb :penny_list
-=======
 post '/add-penny' do
   number = params[:number].to_i
   penny_hash = {name: params[:name], description: params[:description], org_id: params[:org_id].to_i, time_requirement: params[:time_req], time: params[:time], location: params[:location], date: params[:date], status: 0}
@@ -133,7 +124,6 @@ post '/add-penny' do
     session[:error] = @result[:message]
     redirect '/post-penny'
   end
->>>>>>> 88b6e2557647e1d9c21df1f2b7c0a5fb18b0ac5e
 end
 
 
