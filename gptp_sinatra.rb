@@ -79,7 +79,7 @@ end
 
 get '/penny_list' do
   t = Time.now
-  today = "#{t.year} #{t.month} #{t.day}"
+  today = "#{t.month}/#{t.day}/#{t.year}"
   penny = GPTP.db.create_penny(name: "test", description: "do good", org_id: 1, time_requirement: 4, time: 'noon', date: today, status: 0, vol_id: 1, location: "dog park")
   @array = []
   @array = GPTP.db.list_pennies

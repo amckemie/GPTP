@@ -1,3 +1,4 @@
+@charset "ISO-8859-1";
 /* line 311, ../sass/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/5.2.2/"; }
@@ -6630,6 +6631,14 @@ th.hide-for-touch {
 .touch th.show-for-touch {
   display: table-cell !important; }
 
+@font-face {
+  font-family: 'Satellite';
+  src: url("../fonts/satellite.otf") format("otf"), url("../fonts/satellite.otf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */ }
+@font-face {
+  font-family: 'Satellite Oblique';
+  src: url("../fonts/satellite-oblique.otf") format("otf"), url("../fonts/satellite-oblique.otf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */ }
 /* line 1, ../sass/mystyles/_topbar.scss */
 .top-bar {
   height: 4em;
@@ -6712,7 +6721,7 @@ body {
   background-repeat: repeat-y;
   background-size: 100%;
   background-position: cover;
-  font-family: Satelllite; }
+  font-family: Satellite; }
 
 /* line 20, ../sass/mystyles/_body.scss */
 .container {
@@ -6815,7 +6824,7 @@ body {
   background-repeat: repeat-y;
   background-size: 100%;
   background-position: cover;
-  font-family: Satelllite; }
+  font-family: Satellite; }
 
 /* line 20, ../sass/mystyles/_body.scss */
 .container {
