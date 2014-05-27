@@ -1,0 +1,43 @@
+<!-- Left Header Title -->
+<% content_for :nav_name do %>
+  <h3 class="user">Organizations</h3>
+<% end %>
+
+<!-- Right Section of buttons -->
+<% content_for :button do %>
+  <li class="user buttons">
+    <% if session[:user].class == GPTP::Volunteer%>
+      <a href="/volunteer" class="button">Your Profile</a>
+    <% else %>
+      <a href="/organization" class="button">Your Profile</a>
+    <% end %>
+  </li>
+  <li class="user buttons">
+    <a href="/all-volunteers" class="button">Volunteers</a>
+  </li>
+  <li class="user buttons">
+    <a href="/all-pennies" class="button">Pennies</a>
+  </li>
+<% end %>
+
+<!-- Organization Table Header -->
+<% content_for :table_header do %>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Address</th>
+  <th>Phone Number</th>
+<% end %>
+
+<!-- Organization Table rows (All Organization info)-->
+<% content_for :table_content do %>
+  <% if @result[:success?] %>
+    <% @result[:result].each do |entity| %>
+      <tr>
+        <td><%= entity.name %></td>
+        <td><%= entity.description %></td>
+        <td><%= entity.address %></td>
+        <td><%= entity.phone_num %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

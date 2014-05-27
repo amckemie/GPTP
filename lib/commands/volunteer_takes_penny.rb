@@ -5,8 +5,6 @@ class GPTP::VolunteerTakesPenny
     # Returns a penny assigned to volunteer
     penny = GPTP.db.get_penny(input[:penny_id])
     volunteer = GPTP.db.get_volunteer(input[:volunteer_email])
-    #game.winner
-    #match.winner
     if penny.vol_id == nil
       penny = GPTP.db.update_penny(input[:penny_id], {vol_id: volunteer.id})
       return {

@@ -5,17 +5,17 @@
         <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
       </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      <li class="toggle-topbar"><a href="#"><span>Menu</span></a></li>
     </ul>
 
     <section class="top-bar-section">
       <!-- Left Nav Section -->
       <ul class="left">
         <li class="has-dropdown">
-          <a href="#"><li class="three-lines">&#9776;</li></a>
+          <a href="#"><div class="three-lines">&#9776;</div></a>
           <ul class="dropdown menu-button">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#about" class="scroll">About Us</a></li>
+            <li><a href="#contact" class="scroll">Contact Us</a></li>
           </ul>
         </li>
       </ul>
@@ -34,6 +34,7 @@
 
       <!-- Volunteer div -->
       <div class="small-5 medium-5 large-5 columns vol-div">
+        <div id="vol_div">
           <div class="row">
             <div class="small-12 medium-12 large-12 columns">
               <h2 class="h2">Give a penny...</h2>
@@ -46,18 +47,22 @@
           </div>
           <div class="row heading-padding">
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign In">
+              <a href="#" class="button" id="vol_in">Sign In</a>
             </div>
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign Up">
+              <a href="#" class="button" id="vol_up">Sign Up</a>
             </div>
+            <% if session[:error] %>
+              <p><%= session[:error] %></p>
+              <%= session[:error] = nil %>
+            <% end %>
           </div>
+        </div>
           <!-- Volunteer Sign In -->
-          <div class="row">
+          <div class="row hidden" id="vol_in_form">
             <form method="post" action="/volunteer-sign-in">
               <fieldset>
                 <legend> Volunteer Sign In</legend>
-
                 <div class="row">
                   <div class="large-8 columns">
                     <label>Email</label>
@@ -72,14 +77,10 @@
                 </div>
                 <input class="button" type="submit" value="Sign In">
               </fieldset>
-              <% if session[:error] %>
-              <p><%= session[:error] %></p>
-              <%= session[:error] = nil %>
-            <% end %>
             </form>
           </div>
           <!-- Volunteer Sign Up Form -->
-          <div class="row">
+          <div class="row hidden" id="vol_up_form">
             <form method="post" action="/volunteer-sign-up">
               <fieldset>
                 <legend>Volunteer Sign Up</legend>
@@ -109,17 +110,16 @@
                 </div>
                 <input class="button" type="submit" value="Sign Up">
               </fieldset>
-              <% if session[:error] %>
-                <p><%= session[:error] %></p>
-                <%= session[:error] = nil %>
-              <% end %>
             </form>
           </div>
           <!-- About us -->
-          <div class="row">
+          <div class="row" id="about">
+            <div class="small-12 medium-12 large-12 columns">
+              <h3>About Us</h3>
+                <p>Take a Penny, Give a Penny aims to make it easier for civic organizations to get the help they need by allowing them to post their volunteer needs online and allowing volunteers to take these opportunities. Whether you are a non-profit organization who is finding it difficult to get enough volunteers for your events or daily needs, or are a good samaritan who wants to help out but doesn't know where to go, Take a Penny, Give a Penny can help bring you together.</p>
+            </div>
           </div>
       </div>
-
       <!-- Coin div -->
       <div class="small-2 medium-2 large-2 columns coin-div">
         <div class="row">
@@ -131,6 +131,7 @@
 
       <!-- Organizations div -->
       <div class="small-5 medium-5 large-5 columns org-div">
+        <div id="org_div">
           <div class="row">
             <div class="small-12 medium-12 large-12 columns">
               <h2 class="h2">Take a penny...</h2>
@@ -143,14 +144,19 @@
           </div>
           <div class="row heading-padding">
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign In">
+              <a href="#" class="button" id="org_in">Sign In</a>
             </div>
             <div class="small-6 medium-6 large-6 columns">
-              <input class="button" type="submit" value="Sign Up">
+              <a href="#" class="button" id="org_up">Sign Up</a>
+             <% if session[:org_error] %>
+              <p><%= session[:org_error] %></p>
+              <%= session[:org_error] = nil %>
+             <% end %>
             </div>
-            </div>
+          </div>
+        </div>
           <!-- Organization Sign In Form -->
-          <div class="row">
+          <div class="row hidden" id="org_in_form">
             <form method="post" action="/organization-sign-in">
               <fieldset>
                 <legend>Organization Sign In</legend>
@@ -168,14 +174,10 @@
                 </div>
                 <input class="button" type="submit" value="Sign In">
               </fieldset>
-            <% if session[:org_error] %>
-              <p><%= session[:org_error] %></p>
-              <%= session[:org_error] = nil %>
-            <% end %>
             </form>
           </div>
           <!-- Organization Sign Up Form -->
-          <div class="row form-padding">
+          <div class="row hidden" id="org_up_form">
             <form method="post" action="/organization-sign-up">
               <fieldset>
                 <legend>Organization Sign Up</legend>
@@ -215,14 +217,10 @@
                 </div>
                 <input class="button" type="submit" value="Sign Up">
               </fieldset>
-              <% if session[:error] %>
-                <p><%= session[:error] %></p>
-                <%= session[:error] = nil %>
-              <% end %>
             </form>
           </div>
           <!-- Contact Us -->
-          <div class="row">
+          <div class="row" id="contact">
             <form method="post" action="/contact-us">
               <fieldset>
                 <legend>Contact Us</legend>
@@ -230,12 +228,6 @@
                   <div class="large-8 columns">
                     <label>Name</label>
                     <input type="text" name="name" placeholder="Name">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="large-8 columns">
-                    <label>Company</label>
-                    <input type="text" name="company" placeholder="Company">
                   </div>
                 </div>
                 <div class="row">
@@ -253,29 +245,16 @@
                 <div class="row">
                   <div class="large-8 columns">
                     <label>Message
-                      <textarea placeholder="small-12.columns"></textarea>
+                      <textarea placeholder="Enter Your Message"></textarea>
                     </label>
                   </div>
                 </div>
                 <input class="button" type="submit" value="Submit">
               </fieldset>
-         <!--      <% if session[:error] %>
-                <p><%= session[:error] %></p>
-                <%= session[:error] = nil %>
-              <% end %> -->
             </form>
           </div>
       </div>
-
     </div>
- </div>
+  </div>
 </div>
 
-<!-- footer -->
-<div class="small-12 medium-12 large-12 columns footer">
-  <ul>
-    <li><i class="fa fa-facebook-square fa-lg"></i></li>
-    <li><i class="fa fa-github-square fa-lg"></i></li>
-    <li><i class="fa fa-twitter-square fa-lg"></i></li>
-  </ul>
-</div>

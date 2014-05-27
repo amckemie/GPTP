@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GPTP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- Top Bar -->
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/"><img class="logo" src="images/gptplogo.png"></a></h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li>
+          <%= yield_content :nav_name %>
+        </li>
+      </ul>
+
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <%= yield_content :button %>
+      </ul>
+    </section>
+  </nav>
+
+  <!-- body -->
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <table class="list-all">
+        <thead>
+          <tr>
+            <%= yield_content :table_header %>
+          </tr>
+        </thead>
+        <tbody>
+          <%= yield_content :table_content %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="small-12 medium-12 large-12 columns footer">
+    <ul>
+      <li><i class="fa fa-facebook-square fa-lg"></i></li>
+      <li><i class="fa fa-github-square fa-lg"></i></li>
+      <li><i class="fa fa-twitter-square fa-lg"></i></li>
+    </ul>
+  </div>
+</body>
+</html>

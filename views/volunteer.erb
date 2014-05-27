@@ -1,65 +1,62 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GPTP</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<!-- Top Bar -->
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="#"><img class="logo" src="images/gptplogo.png"></a></h1>
-      </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
+<% content_for :button do %>
+  <li class="user buttons">
+    <a href="/all-organizations" class="button">Organizations</a>
+  </li>
+  <li class="user buttons">
+    <a href="/all-pennies" class="button">Pennies</a>
+  </li>
+<% end %>
 
-    <section class="top-bar-section">
-      <!-- Left Nav Section -->
-      <ul class="left">
-        <li>
-          <h3 class="user"><%= session[:user].name %></h3>
-        </li>
-      </ul>
+<% content_for :table_header do %>
+  <th>Date</th>
+  <th>Name</th>
+  <th>Organization ID</th>
+  <th>Hours</th>
+<% end %>
 
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="user buttons">
-          <a href="/organization" class="button">Organizations</a>
-        </li>
-        <li class="user buttons">
-          <a href="#" class="button">Pennies</a>
-        </li>
-      </ul>
-    </section>
-  </nav>
+<% content_for :table_content do %>
+  <% if @pennies[:success?] == false %>
+    <tr colspan="2">
+      <td>You have no pennies</td>
+    </tr>
+  <% elsif @pennies[:past_pennies] == nil %>
+    <%= @pennies[:error] %>
+  <% else %>
+    <% @pennies[:past_pennies].each do |penny| %>
+      <tr>
+        <td><%= penny.date %></td>
+        <td><%= penny.name %></td>
+        <td><%= penny.org_id %></td>
+        <td><%= penny.time_requirement %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>
 
-  <!-- body -->
-  <div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-      <div class="small-6 medium-6 large-6 columns pennies" style="background-color: red">
-        <h3>Past Pennies</h3>
-      </div>
-      <div class="small-6 medium-6 large-6 columns pennies" style="background-color: yellow">
-        <h3>Upcoming Pennies</h3>
-      </div>
-    </div>
-  </div>
-  <!-- footer -->
-  <div class="small-12 medium-12 large-12 columns footer">
-    <ul>
-      <li><i class="fa fa-facebook-square fa-2x"></i>Facebook</li>
-      <li><i class="fa fa-camera-retro fa-2x"></i>Github</li>
-      <li><i class="fa fa-camera-retro fa-2x"></i>Twitter</li>
-    </ul>
-  </div>
-  <script src="/js/foundation.min.js"></script>
-</body>
-</html>
+<% content_for :table_header_upcoming do %>
+  <tr>
+    <th width="150">Date</th>
+    <th width="150">Time</th>
+    <th width="200">Location</th>
+    <th width="150">Name</th>
+    <th width="150">Organization ID</th>
+  </tr>
+<% end %>
 
-
+<% content_for :table_content_upcoming do %>
+  <% if @pennies[:success?] == false %>
+    <tr colspan="2"><%= @pennies[:error] %></tr>
+  <% elsif @pennies[:upcoming_pennies] == nil %>
+    <%= @pennies[:error]%>
+  <% else %>
+    <% @pennies[:upcoming_pennies].each do |penny| %>
+      <tr>
+        <td><%= penny.date %></td>
+        <td><%= penny.time %></td>
+        <td><%= penny.location %></td>
+        <td><%= penny.name %></td>
+        <td><%= penny.org_id %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

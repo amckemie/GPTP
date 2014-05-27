@@ -10,6 +10,12 @@ describe GPTP::GetPennies do
     @cd = GPTP::GetPennies.new
   end
 
+  after(:each) do
+    GPTP.db.clear_table("pennies")
+    GPTP.db.clear_table("volunteers")
+    GPTP.db.clear_table("organizations")
+  end
+
   let(:today) {"#{@t.year} #{@t.month} #{@t.day}"}
   let(:org1) {GPTP.db.create_organization(name: "Doing Good", password: "dgdg", description: "doing good stuff", phone_num: "512-123-4567", address: "123 road drive", email: "org@gmail.com")}
   let(:user1) {GPTP.db.create_volunteer(name: "Susie", password: "123abc", age: 21, email: "susie@gmail.com")}

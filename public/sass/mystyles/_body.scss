@@ -3,12 +3,8 @@
   font-family: Satellite;
   font-size: 20px;
 }
-.pennies {
-  margin: -1rem;
-  h3 {
-    margin-left: 4rem;
-    margin: 0 auto;
-  }
+.hidden {
+  display: none;
 }
 body {
   background-image: url("../images/background.png");
@@ -19,7 +15,7 @@ body {
 }
 .container{
   padding-top: 5em;
-  padding-bottom: 2em;
+  padding-bottom: 2.5em;
 }
 .vol-div{
   margin-left: -3em;
@@ -52,3 +48,22 @@ h3{
 .fa:hover{
   color: #F7CA10;
 }
+
+#vol_in_form {
+  margin: 2rem 0 14rem 0;
+}
+
+#vol_up_form {
+  margin: -4rem 0 8rem 0;
+}
+
+#org_in_form {
+  margin: 2rem 0 12rem 0;
+}
+
+#org_up_form {
+  margin: -7rem 0 5rem 0;
+}
+
+
+

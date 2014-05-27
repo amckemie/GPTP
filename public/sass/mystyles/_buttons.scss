@@ -1,8 +1,4 @@
 
-.penny_profile{
-  margin: 0 auto;
-  width: 100%;
-}
 .button{
   background: #F7CA10;
   color: #333;
@@ -12,6 +8,10 @@
 .button:hover, .button:focus{
   background: #F5AB35;
   color: #333;
+}
+
+.top-bar-section ul li > a.penny {
+  background: #F7CA10;
 }
 
 

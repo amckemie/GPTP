@@ -7,6 +7,12 @@ describe GPTP::VolunteerTakesPenny do
     GPTP.db.clear_table("organizations")
   end
 
+  after(:each) do
+    GPTP.db.clear_table("pennies")
+    GPTP.db.clear_table("volunteers")
+    GPTP.db.clear_table("organizations")
+  end
+
   let(:user1) {GPTP.db.create_volunteer(name: "Susie", password: "123abc", age: 21, email: "susie@gmail.com")}
   it 'exists' do
     expect(GPTP::VolunteerTakesPenny).to be_a(Class)
@@ -22,6 +28,7 @@ describe GPTP::VolunteerTakesPenny do
     expect(result[:success?]).to eq(true)
     expect(result[:volunteer]).to be_a(GPTP::Volunteer)
     expect(result[:message]).to eq("Susie successfully took the penny!")
+    expect(result[:penny].vol_id).to eq(result[:volunteer].id)
   end
 
   it "returns an error message if the penny is taken" do
@@ -34,4 +41,7 @@ describe GPTP::VolunteerTakesPenny do
     expect(result[:error]).to eq("Sorry, this penny has already been taken.")
   end
 
+  GPTP.db.clear_table("pennies")
+  GPTP.db.clear_table("volunteers")
+  GPTP.db.clear_table("organizations")
 end
