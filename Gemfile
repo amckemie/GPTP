@@ -11,5 +11,6 @@ gem 'rack-test'
 gem 'capybara' #add-on to rspec to test views
 gem 'sass'
 gem 'rake'
+gem 'activerecord', '~> 4.1.0'
 gem 'active_record_tasks', '~> 1.1.0'
 # gem 'foundation'

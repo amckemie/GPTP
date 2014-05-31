@@ -253,8 +253,8 @@ class GPTP::DB
   end
 end
 
-module GPTP
-  def self.db
-    @__db_instance ||= DB.new("gptp.db")
-  end
-end
+# module GPTP
+#   def self.db
+#     @__db_instance ||= DB.new("gptp.db")
+#   end
+# end
