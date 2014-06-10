@@ -24,6 +24,10 @@ class GPTP::ActiveRecordDatabase
   end
 
   # Penny CRUD Methods
+  def build_penny(penny)
+    GPTP::Penny.new(penny.id, penny.name, penny.description, penny.org_id, penny.time_requirement, penny.time, penny.date, penny.location, penny.status, penny.vol_id)
+  end
+
   def create_penny(attrs)
     new_penny = Penny.create(attrs)
     build_penny(new_penny)
@@ -31,24 +35,26 @@ class GPTP::ActiveRecordDatabase
 
   def get_penny(id)
     penny = Penny.find(id)
-    build_penny(penny)
+    if penny
+      build_penny(penny)
+    else
+      penny
+    end
   end
 
   def update_penny(id, data)
     penny = Penny.find(id)
-    binding.pry
-    penny.update(data)
-    build_penny(penny.attributes)
+    if penny
+      penny.update(data)
+      build_penny(penny)
+    else
+      penny
+    end
   end
 
   def destroy_penny(id)
     penny = Penny.find(id)
     penny.destroy
-  end
-
-  def build_penny(pennyHash)
-    binding.pry
-    GPTP::Penny.new(id: penny.id, name: penny.name, description: penny.description, org_id: penny.org_id, date: penny.date, location: penny.location, status: penny.status, time_requirement: penny.time_requirement, vol_id: penny.vol_id)
   end
 
   # Volunteer CRUD methods

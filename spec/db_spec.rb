@@ -118,23 +118,23 @@ describe 'GPTP::ActiveRecordDatabase' do
   end
 
   describe 'pennies' do
-    xit 'creates a penny' do
-      penny
+    it 'creates a penny' do
       expect(penny).to be_a(Penny)
+      expect(penny.name).to eq('test')
+      expect(penny.description).to eq('do good')
+      expect(penny.org_id).to eq(1)
     end
 
-    xit 'updates a penny' do
+    it 'updates a penny' do
       penny
-      # binding.pry
       new_penny = db.update_penny(penny.id, {status: 1})
       expect(new_penny.name).to eq('test')
       expect(new_penny.status).to eq 1
     end
 
-    xit 'gets penny' do
+    it 'gets penny' do
       penny
       a_penny = db.get_penny(penny.id)
-      p a_penny
       expect(a_penny).to be_a(Penny)
     end
 
