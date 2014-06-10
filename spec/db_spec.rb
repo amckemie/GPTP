@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'fileutils'
 require 'time'
 
-describe 'GPTP::SQLiteDatabase' do
+describe 'GPTP::ActiveRecordDatabase' do
 
   before(:each) {@t = Time.now}
 
@@ -22,7 +22,7 @@ describe 'GPTP::SQLiteDatabase' do
 
   describe 'volunteers' do
     # create_volunteer
-    xit "creates a volunteer with a unique name, pw, and age by adding a record and returning a volunteer object" do
+    it "creates a volunteer with a unique name, pw, and age by adding a record and returning a volunteer object" do
       expect(volunteer1.name).to eq("Susie")
       expect(volunteer1.password).to eq("123abc")
       expect(volunteer1.age).to eq(21)
@@ -30,7 +30,7 @@ describe 'GPTP::SQLiteDatabase' do
       expect(volunteer1.id).to be_a(Fixnum)
     end
     # get_volunteer
-    xit "returns a volunteer object" do
+    it "returns a volunteer object" do
       volunteer = db.get_volunteer(volunteer1.email)
       expect(volunteer).to be_a(GPTP::Volunteer)
       expect(volunteer.name).to eq("Susie")
@@ -41,7 +41,7 @@ describe 'GPTP::SQLiteDatabase' do
     end
 
     # update_volunteer
-    xit "updates a volunteer's information" do
+    it "updates a volunteer's information" do
       volunteer = db.update_volunteer(volunteer1.email, age: 24)
       expect(volunteer.name).to eq(volunteer1.name)
       expect(volunteer.age).to eq(24)
@@ -50,11 +50,13 @@ describe 'GPTP::SQLiteDatabase' do
     end
 
     # remove_volunteer
-    xit "deletes a volunteer" do
-      expect(db.remove_volunteer(volunteer1.name)).to eq([])
+    it "deletes a volunteer" do
+      volunteer = db.create_volunteer(name: "Ashley", password: "123abc", age: 21, email: "susie@gmail.com")
+      db.remove_volunteer(volunteer.email)
+      expect(db.get_volunteer(volunteer.email)).to eq(nil)
     end
 
-    xit "lists all volunteers" do
+    it "lists all volunteers" do
       volunteer1
       db.create_volunteer(name: "Ashley", password: "456", age: 25, email: "ashley@gmail.com")
       volunteers = db.list_volunteers
@@ -66,7 +68,7 @@ describe 'GPTP::SQLiteDatabase' do
 
   describe 'organizations' do
     # create_organization
-    xit "creates an organization with a unique id, adds it to the database and returns an organization object" do
+    it "creates an organization with a unique id, adds it to the database and returns an organization object" do
       expect(organization1.name).to eq("Doing Good")
       expect(organization1.password).to eq("dgdg")
       expect(organization1.description).to eq("doing good stuff")
@@ -75,7 +77,7 @@ describe 'GPTP::SQLiteDatabase' do
       expect(organization1.id).to be_a(Fixnum)
     end
 
-    xit "returns a organization object" do
+    it "returns a organization object" do
       organization = db.get_organization(organization1.email)
       expect(organization).to be_a(GPTP::Organization)
       expect(organization1.name).to eq("Doing Good")
@@ -86,7 +88,7 @@ describe 'GPTP::SQLiteDatabase' do
       expect(organization1.id).to be_a(Fixnum)
     end
     # update_organization
-    xit "updates a organization's information" do
+    it "updates a organization's information" do
       organization = db.update_organization(organization1.email, name: "Good Company", address: "123 good road")
       expect(organization.phone_num).to eq(organization1.phone_num)
       expect(organization.name).to eq("Good Company")
@@ -97,11 +99,13 @@ describe 'GPTP::SQLiteDatabase' do
     end
 
     # remove_organization
-    xit "deletes a organization" do
-      expect(db.remove_organization(organization1.email)).to eq([])
+    it "deletes a organization" do
+      organization_test = db.create_organization(name: "Test", password: "dgdg", description: "doing good stuff", phone_num: "512-123-4567", address: "123 road drive", email: "org@gmail.com")
+      db.remove_organization(organization_test.email)
+      expect(db.get_organization(organization_test.email)).to eq(nil)
     end
 
-    xit "lists all organizations" do
+    it "lists all organizations" do
       organization1
       db.create_organization(name: "Company 2", password: "asdfgh", description: "New Company", phone_num: "000-000-0000", address: "123 drive drive", email: "new_org@gmail.com")
       db.create_organization(name: "Company 3", password: "12345", description: "Another Company", phone_num: "111-111-1111", address: "123 road", email: "another_org@gmail.com")
@@ -114,22 +118,22 @@ describe 'GPTP::SQLiteDatabase' do
   end
 
   describe 'pennies' do
-
-    it 'creates a penny' do
+    xit 'creates a penny' do
       penny
-      p penny
       expect(penny).to be_a(Penny)
     end
 
-    it 'updates penny' do
+    xit 'updates a penny' do
       penny
-      penny = db.update_penny(penny.id, {status: 1})
-      expect(penny.status).to eq 1
+      # binding.pry
+      new_penny = db.update_penny(penny.id, {status: 1})
+      expect(new_penny.name).to eq('test')
+      expect(new_penny.status).to eq 1
     end
 
-    it 'gets penny' do
+    xit 'gets penny' do
       penny
-      a_penny = db.get_penny(1)
+      a_penny = db.get_penny(penny.id)
       p a_penny
       expect(a_penny).to be_a(Penny)
     end
@@ -143,7 +147,7 @@ describe 'GPTP::SQLiteDatabase' do
       expect(pennies[1].name).to eq("test2")
     end
 
-    it 'should list a volunteers pennies' do
+    xit 'should list a volunteers pennies' do
       volunteer1
       penny
       penny2
@@ -153,7 +157,7 @@ describe 'GPTP::SQLiteDatabase' do
       expect(pennies[1].name).to eq("test2")
     end
 
-    it 'should list an organizations pennies' do
+    xit 'should list an organizations pennies' do
       organization1
       penny
       penny2
@@ -167,7 +171,7 @@ describe 'GPTP::SQLiteDatabase' do
   after(:each){
     @db = SQLite3::Database.new 'new-test.db'
     @db.execute("DELETE FROM pennies")
-    # @db.execute("DELETE FROM volunteers")
-    # @db.execute("DELETE FROM organizations")
+    @db.execute("DELETE FROM volunteers")
+    @db.execute("DELETE FROM organizations")
   }
 end

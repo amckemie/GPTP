@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530160240) do
+ActiveRecord::Schema.define(version: 20140609212712) do
+
+  create_table "organizations", force: true do |t|
+    t.string "name",        null: false
+    t.string "password",    null: false
+    t.string "description"
+    t.string "address"
+    t.string "email",       null: false
+    t.string "phone_num"
+  end
+
+  add_index "organizations", ["email"], name: "index_organizations_on_email"
 
   create_table "pennies", force: true do |t|
     t.string  "name"
@@ -24,5 +35,14 @@ ActiveRecord::Schema.define(version: 20140530160240) do
     t.integer "status",           default: 0
     t.integer "vol_id"
   end
+
+  create_table "volunteers", force: true do |t|
+    t.string  "name",     null: false
+    t.string  "password", null: false
+    t.integer "age"
+    t.string  "email",    null: false
+  end
+
+  add_index "volunteers", ["email"], name: "index_volunteers_on_email"
 
 end
