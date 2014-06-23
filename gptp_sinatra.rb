@@ -4,7 +4,7 @@ require 'sinatra/reloader'
 require "sinatra/content_for"
 require_relative './lib/gptp.rb'
 
-set :bind, '0.0.0.0'
+set :port, process.env.PORT
 
 enable :sessions
 
