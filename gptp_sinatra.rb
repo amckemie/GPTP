@@ -1,4 +1,3 @@
-require 'pry'
 require 'time'
 require 'sinatra'
 require 'sinatra/reloader'

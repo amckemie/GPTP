@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 class GPTP::OrganizationGivesPenny
   def run(input)
     # Takes input of a hash including hash to create penny and the number of times to create the penny

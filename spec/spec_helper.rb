@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 require './lib/gptp.rb'
 require './gptp_sinatra.rb'
 require 'rspec'

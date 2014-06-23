@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 class GPTP::VolunteerTakesPenny
   def run(input)
     # Takes input of a hash including volunteer_email, penny_id

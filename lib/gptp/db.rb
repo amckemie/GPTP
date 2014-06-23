@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 class GPTP::DB
   attr_writer :db
   def initialize(filename)

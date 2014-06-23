@@ -1,5 +1,4 @@
-require 'sqlite3'
-require 'pry-debugger'
+require 'pg'
 require "active_record"
 require 'active_record_tasks'
 

@@ -1,4 +1,4 @@
-require 'sqlite3'
+require 'pg'
 
 class GPTP::ActiveRecordDatabase
 
