@@ -1,6 +1,6 @@
 require 'spec_helper.rb'
 
-describe GPTP::SignIn do
+describe GPTP::SignUp do
   let(:volunteer1) {GPTP.db.create_volunteer(name: "Susie", password: "123abc", age: 21, email: "susie@gmail.com")}
 
   before(:each) do

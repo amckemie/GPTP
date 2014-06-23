@@ -1,5 +1,5 @@
 test:
-  adapter: sqlite3
+  adapter: postgresql
   database: new-test.db
   pool: 5
   timeout: 5000

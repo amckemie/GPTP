@@ -4,7 +4,7 @@ class GPTP::ActiveRecordDatabase
 
   def initialize
     ActiveRecord::Base.establish_connection(
-      :adapter => 'sqlite3',
+      :adapter => 'postgresql',
       :database => 'new-test.db'
     )
   end
