@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140609212712) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "organizations", force: true do |t|
     t.string "name",        null: false
     t.string "password",    null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140609212712) do
     t.string "phone_num"
   end
 
-  add_index "organizations", ["email"], name: "index_organizations_on_email"
+  add_index "organizations", ["email"], name: "index_organizations_on_email", using: :btree
 
   create_table "pennies", force: true do |t|
     t.string  "name"
@@ -43,6 +46,6 @@ ActiveRecord::Schema.define(version: 20140609212712) do
     t.string  "email",    null: false
   end
 
-  add_index "volunteers", ["email"], name: "index_volunteers_on_email"
+  add_index "volunteers", ["email"], name: "index_volunteers_on_email", using: :btree
 
 end

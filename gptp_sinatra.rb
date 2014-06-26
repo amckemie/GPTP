@@ -4,9 +4,9 @@ require 'sinatra/reloader'
 require "sinatra/content_for"
 require_relative './lib/gptp.rb'
 
-# set :port, process.env.PORT
-
 enable :sessions
+
+set :environment, :production
 
 get '/' do
   erb :home
