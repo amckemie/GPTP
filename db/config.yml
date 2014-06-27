@@ -3,6 +3,9 @@ production:
   database: gptp
   pool: 5
   timeout: 5000
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASS'] %>
+  host: localhost
 
 test:
   adapter: postgresql
