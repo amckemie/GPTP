@@ -5,6 +5,7 @@ require 'active_record_tasks'
 module GPTP
 end
 
+require_relative '././db/environments.rb'
 require_relative './gptp/organization.rb'
 require_relative './gptp/volunteer.rb'
 require_relative './gptp/penny.rb'
